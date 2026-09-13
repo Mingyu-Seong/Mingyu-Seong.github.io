@@ -33,7 +33,6 @@
   p{max-width:66ch}
 
   /* ---------- masthead ---------- */
-  header{padding-block:64px 40px; border-bottom:1px solid var(--line)}
   .name{
     font-size:clamp(2.1rem,6vw,3rem); font-weight:700; letter-spacing:-.025em;
     line-height:1.05; margin:0; text-wrap:balance;
@@ -49,6 +48,46 @@
     display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline;
   }
   .status .dot{width:7px; height:7px; border-radius:50%; background:var(--stance); display:inline-block}
+
+
+  /* ---------- top nav ---------- */
+  .topnav{
+    display:flex; flex-wrap:wrap; gap:4px 22px; padding-block:20px 0;
+    font-family:var(--mono); font-size:.8rem; letter-spacing:.04em;
+  }
+  .topnav a{color:var(--muted); text-decoration:none; padding:2px 0; border-bottom:1px solid transparent}
+  .topnav a:hover{color:var(--ink); border-bottom-color:var(--stance)}
+
+  /* ---------- intro ---------- */
+  header{padding-block:34px 40px}
+  .intro{display:flex; gap:38px; align-items:flex-start}
+  .introtext{flex:1 1 0; min-width:0}
+  .portrait{flex:0 0 168px}
+  .portrait img{
+    display:block; width:168px; height:210px; object-fit:cover;
+    border:1px solid var(--line); background:var(--surface);
+  }
+  @media (max-width:640px){
+    .intro{flex-direction:column-reverse; gap:22px}
+    .portrait{flex:none}
+    .portrait img{width:132px; height:165px}
+  }
+  .bio{font-size:1.02rem; line-height:1.62; color:var(--ink-soft); margin:20px 0 0; max-width:62ch}
+  .bio strong{color:var(--ink); font-weight:600}
+  .idlinks{display:flex; flex-wrap:wrap; gap:6px 18px; margin:20px 0 0; font-size:.9rem}
+  .idlinks a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent}
+  .idlinks a:hover{border-bottom-color:var(--swing)}
+
+  /* ---------- news ---------- */
+  .news{list-style:none; padding:0; margin:0; display:grid; gap:0; border-top:1px solid var(--line)}
+  .news li{
+    display:grid; grid-template-columns:92px minmax(0,1fr); gap:4px 18px;
+    padding:11px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  }
+  .when{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
+  .what{font-size:.95rem; color:var(--ink-soft)}
+  .what strong{color:var(--ink); font-weight:600}
+  @media (max-width:520px){ .news li{grid-template-columns:1fr; gap:2px} }
 
   /* ---------- figures row ---------- */
   .facts{
@@ -165,20 +204,42 @@
 
 <div class="wrap">
 
-  <header>
-    <h1 class="name">Mingyu Seong</h1>
-    <p class="role">Wearable Robotics · Assistive Exoskeletons · Gait Control</p>
-    <p class="thesis">
-      I build ankle exoskeletons that reduce the effort of walking — and I build
-      <strong>every layer of them</strong>: the mechanism, the pneumatics, the circuit that
-      times the assistance, the human study that says whether it worked. Control is the
-      layer I want to go deepest in, and I bring to it something most control applicants
-      cannot: I can build the device the controller runs on.
-    </p>
-    <p class="status">
-      <span><span class="dot"></span> M.S. Robotics Engineering, Yeungnam University (Feb 2026)</span>
-      <span>Applying for PhD study, Fall 2027</span>
-    </p>
+  <nav class="topnav" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#control">Control</a>
+    <a href="#publications">Publications</a>
+    <a href="cv.pdf">CV</a>
+  </nav>
+
+  <header id="about">
+    <div class="intro">
+      <div class="introtext">
+        <h1 class="name">Mingyu Seong</h1>
+        <p class="role">Wearable Robotics · Assistive Exoskeletons · Gait Control</p>
+        <p class="bio">
+          I am a master's graduate in Robotics Engineering from Yeungnam University, where I
+          worked with Prof. Jungsu Choi in the Human Robot Convergence Laboratory. I design
+          wearable assistive robots — ankle exoskeletons that reduce the effort of walking —
+          and I build <strong>every layer of them</strong>, from the mechanism to the circuit
+          that times the assistance to the human study that says whether it worked.
+        </p>
+        <p class="bio">
+          I am applying for PhD study starting Fall 2027. <strong>Control of assistive devices
+          is the work I want to do</strong>, and I bring to it something uncommon on that side
+          of the field: I can build the device the controller runs on.
+        </p>
+        <p class="idlinks">
+          <a href="mailto:smk1427@yu.ac.kr">smk1427@yu.ac.kr</a>
+          <a href="cv.pdf">CV (PDF)</a>
+          <a href="https://hrc.yu.ac.kr">HRC Lab</a>
+        </p>
+      </div>
+      <div class="portrait">
+        <img src="img/portrait.jpg" alt="Mingyu Seong"
+             onerror="this.closest('.portrait').hidden=true">
+      </div>
+    </div>
 
     <div class="facts">
       <div class="fact"><b>0.99 kg</b><span>Device mass, worn</span></div>
@@ -188,7 +249,18 @@
     </div>
   </header>
 
-  <section>
+  <section id="news">
+    <p class="eyebrow">Recent</p>
+    <ul class="news">
+      <li><span class="when">Feb 2026</span><span class="what">Completed my M.S. in Robotics Engineering at Yeungnam University.</span></li>
+      <li><span class="when">Jan 2026</span><span class="what">Filed a Korean patent application for the ankle assist device.</span></li>
+      <li><span class="when">Nov 2025</span><span class="what">Presented our switching-stiffness pneumatic spring at <strong>ICCAS 2025</strong>.</span></li>
+      <li><span class="when">Oct 2025</span><span class="what">Presented the personalized Robotic Achilles Tendon at <strong>IROS 2025</strong> in Hangzhou.</span></li>
+      <li><span class="when">Jul 2025</span><span class="what">Presented the semi-passive ankle assist system at the <strong>Joint IFAC MECHATRONICS / ROBOTICS Symposium</strong> in Paris.</span></li>
+    </ul>
+  </section>
+
+  <section id="research">
     <p class="eyebrow">Research</p>
     <h2>Robotic Achilles Tendon</h2>
     <p>
@@ -213,7 +285,7 @@
     </figure>
   </section>
 
-  <section>
+  <section id="control">
     <p class="eyebrow">Control</p>
     <h2>Where the control actually sits</h2>
     <p>
@@ -374,7 +446,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="publications">
     <p class="eyebrow">Publications</p>
     <h2>Selected work</h2>
 
@@ -427,4 +499,3 @@
   </section>
 
 </div>
-
