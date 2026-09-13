@@ -1,0 +1,429 @@
+<title>Mingyu Seong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#F6F7F9; --surface:#FFFFFF; --ink:#141922; --ink-soft:#39424F;
+    --muted:#5A6473; --line:#DCE1E8; --line-soft:#E8ECF1;
+    --stance:#C4362B; --swing:#2C5C9C; --stance-wash:#F6E3E1; --swing-wash:#E2E9F4;
+    --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
+      --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+      --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
+    --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+    --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:800px; margin:0 auto; padding-inline:24px; padding-block:0 72px}
+  p{max-width:66ch}
+
+  /* ---------- masthead ---------- */
+  header{padding-block:64px 40px; border-bottom:1px solid var(--line)}
+  .name{
+    font-size:clamp(2.1rem,6vw,3rem); font-weight:700; letter-spacing:-.025em;
+    line-height:1.05; margin:0; text-wrap:balance;
+  }
+  .role{
+    font-family:var(--mono); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:14px 0 0;
+  }
+  .thesis{font-size:1.15rem; line-height:1.55; color:var(--ink-soft); margin:26px 0 0; max-width:60ch}
+  .thesis strong{color:var(--ink); font-weight:600}
+  .status{
+    margin:22px 0 0; font-size:.94rem; color:var(--muted);
+    display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline;
+  }
+  .status .dot{width:7px; height:7px; border-radius:50%; background:var(--stance); display:inline-block}
+
+  /* ---------- figures row ---------- */
+  .facts{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    margin-block:36px 0;
+  }
+  .fact{background:var(--ground); padding:16px 14px}
+  .fact b{
+    display:block; font-family:var(--mono); font-size:1.3rem; font-weight:500;
+    letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--ink);
+  }
+  .fact span{display:block; font-size:.78rem; color:var(--muted); margin-top:4px; line-height:1.35}
+  @media (max-width:620px){ .facts{grid-template-columns:repeat(2,1fr)} }
+
+  /* ---------- sections ---------- */
+  section{padding-block:52px 0}
+  .eyebrow{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:12px; margin:0 0 18px;
+  }
+  .eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+  h2{font-size:1.5rem; font-weight:600; letter-spacing:-.02em; margin:0 0 14px; text-wrap:balance}
+  h3{font-size:1rem; font-weight:600; margin:0 0 6px}
+
+  figure{margin:26px 0 0}
+  figure img{display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); background:var(--surface)}
+  figcaption{font-size:.82rem; color:var(--muted); margin-top:9px; max-width:62ch}
+
+  /* ---------- gait diagram ---------- */
+  .gait{margin:30px 0 0}
+  .gait svg{display:block; width:100%; height:auto; max-width:100%}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; font-size:.84rem; color:var(--muted)}
+  .legend i{display:inline-block; width:11px; height:11px; margin-right:7px; vertical-align:-1px}
+  .legend .s1{background:var(--stance)} .legend .s2{background:var(--swing)}
+
+  /* ---------- loop list ---------- */
+  .loop{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
+  .loop li{background:var(--ground); padding:15px 16px}
+  .loop .step{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--stance); display:block; margin-bottom:5px;
+  }
+  .loop p{margin:0; font-size:.94rem; color:var(--ink-soft); max-width:62ch}
+
+  /* ---------- gap callout ---------- */
+  .gap{
+    margin:34px 0 0; padding:22px 24px; background:var(--surface);
+    border:1px solid var(--line); border-left:3px solid var(--stance);
+  }
+  .gap h3{font-size:1.05rem; margin-bottom:10px}
+  .gap p{margin:0 0 12px; color:var(--ink-soft)}
+  .gap p:last-child{margin-bottom:0}
+  .gap strong{color:var(--ink); font-weight:600}
+
+  /* full-stack layer list */
+  .stack{display:grid; gap:0; margin:4px 0 18px; border-top:1px solid var(--line)}
+  .layer{
+    display:grid; grid-template-columns:132px minmax(0,1fr); gap:4px 16px;
+    padding:9px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  }
+  .lk{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--stance);
+  }
+  .lv{font-size:.9rem; color:var(--ink-soft)}
+  @media (max-width:520px){ .layer{grid-template-columns:1fr; gap:2px} }
+
+  /* grade + axis markers */
+  .grade{
+    font-family:var(--mono); font-size:.74rem; font-weight:500; color:var(--ink);
+    border:1px solid var(--line); padding:1px 6px; margin-right:8px;
+  }
+  .axis{
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase;
+    padding:1px 6px; margin-right:8px; white-space:nowrap; border:1px solid currentColor;
+  }
+  .axis.ctl{color:var(--stance)}
+  .axis.math{color:var(--swing)}
+  .axis.mech{color:var(--muted)}
+
+  /* ---------- coursework ---------- */
+  .courses{display:grid; gap:0; margin:22px 0 0; border-top:1px solid var(--line)}
+  .course{
+    display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 20px;
+    padding:14px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  }
+  .course h3{margin:0}
+  .course .detail{grid-column:1/-1; font-size:.9rem; color:var(--muted); margin:0; max-width:64ch}
+  .course .term{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
+  @media (max-width:520px){ .course{grid-template-columns:1fr} .course .term{grid-row:1} }
+
+  /* ---------- publications ---------- */
+  .pubs{margin:22px 0 0; display:grid; gap:20px}
+  .pub{display:grid; gap:5px}
+  .pub .title{font-weight:600; line-height:1.45}
+  .pub .venue{font-size:.9rem; color:var(--ink-soft)}
+  .pub .meta{font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em}
+  .pub .meta a{color:var(--swing)}
+  .tag{
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+    padding:2px 7px; border:1px solid var(--line); color:var(--muted); white-space:nowrap;
+  }
+  .tag.oral{color:var(--stance); border-color:var(--stance)}
+  .more{font-size:.9rem; color:var(--muted); margin-top:4px}
+
+  /* ---------- contact ---------- */
+  .contact{display:flex; flex-wrap:wrap; gap:10px 28px; margin:20px 0 0; font-size:.97rem}
+  .contact a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:1px}
+  .contact a:hover{border-bottom-color:var(--swing)}
+  a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:.8rem; color:var(--muted); font-family:var(--mono)}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <h1 class="name">Mingyu Seong</h1>
+    <p class="role">Wearable Robotics · Assistive Exoskeletons · Gait Control</p>
+    <p class="thesis">
+      I build ankle exoskeletons that reduce the effort of walking — and I build
+      <strong>every layer of them</strong>: the mechanism, the pneumatics, the circuit that
+      times the assistance, the human study that says whether it worked. Control is the
+      layer I want to go deepest in, and I bring to it something most control applicants
+      cannot: I can build the device the controller runs on.
+    </p>
+    <p class="status">
+      <span><span class="dot"></span> M.S. Robotics Engineering, Yeungnam University (Feb 2026)</span>
+      <span>Applying for PhD study, Fall 2027</span>
+    </p>
+
+    <div class="facts">
+      <div class="fact"><b>0.99 kg</b><span>Device mass, worn</span></div>
+      <div class="fact"><b>&minus;14.3%</b><span>Metabolic cost of walking</span></div>
+      <div class="fact"><b>N = 6</b><span>Human subjects tested</span></div>
+      <div class="fact"><b>4.37<span style="font-size:.8rem;color:var(--muted)">/4.50</span></b><span>M.S. GPA</span></div>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">Research</p>
+    <h2>Robotic Achilles Tendon</h2>
+    <p>
+      A semi-passive ankle-assist exoskeleton. Instead of a motor, it stores the wearer's own
+      ground reaction force in a pneumatic spring during stance and returns it at push-off.
+      The spring's stiffness is switchable, so the same device can be matched to a
+      particular walker rather than built for an average one.
+    </p>
+    <p>
+      Across six subjects walking at 4 km/h, wearing the device reduced metabolic cost by
+      14.3% compared with walking without it, at a worn mass of 0.99 kg. I led the work
+      end to end: mechanism design, sensing and phase logic, benchtop force characterization,
+      and the human-subject protocol.
+    </p>
+
+    <figure>
+      <img src="img/system-overview.jpg" alt="Diagram of the Robotic Achilles Tendon worn on both legs, showing the 24 V battery at the waist, the switchable stiffness spring at the ankle in its CLOSE and OPEN states, and the force sensitive resistor under the foot.">
+      <figcaption>
+        The worn system. The spring closes to resist ankle dorsiflexion during stance and opens
+        to let the ankle swing freely — the whole assistive behavior is that one switch, timed correctly.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="eyebrow">Control</p>
+    <h2>Where the control actually sits</h2>
+    <p>
+      A passive spring on an ankle is only useful if it engages and releases at the right
+      moments in the gait cycle. That timing is the control problem in this device, and it is
+      the part I designed.
+    </p>
+
+    <div class="gait">
+      <svg viewBox="0 0 720 178" role="img" aria-label="Gait cycle timeline: stance phase from 0 to 60 percent with the spring engaged, swing phase from 60 to 100 percent with the ankle free. Heel strike at 0 percent and toe off at 60 percent are the two switching events.">
+        <!-- phase bars -->
+        <rect x="8" y="52" width="418" height="34" fill="var(--stance)"></rect>
+        <rect x="426" y="52" width="278" height="34" fill="var(--swing)"></rect>
+
+        <text x="18" y="74" fill="#FFFFFF" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600">STANCE — spring engaged</text>
+        <text x="436" y="74" fill="#FFFFFF" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600">SWING — free</text>
+
+        <!-- event ticks -->
+        <line x1="8" y1="38" x2="8" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+        <line x1="426" y1="38" x2="426" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+        <line x1="704" y1="38" x2="704" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+
+        <text x="8" y="30" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">HEEL STRIKE</text>
+        <text x="426" y="30" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">TOE OFF</text>
+        <text x="704" y="30" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">HEEL STRIKE</text>
+
+        <!-- axis -->
+        <line x1="8" y1="108" x2="704" y2="108" stroke="var(--line)" stroke-width="1"></line>
+        <text x="8" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">0%</text>
+        <text x="426" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">~60%</text>
+        <text x="704" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">100%</text>
+        <text x="356" y="152" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif" font-size="12" text-anchor="middle">Gait cycle</text>
+
+        <!-- trigger annotation -->
+        <text x="8" y="172" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif" font-size="12">Switching signal: one FSR under the foot, thresholded in analog hardware.</text>
+      </svg>
+      <div class="legend">
+        <span><i class="s1"></i>Spring closed — resists dorsiflexion, stores energy</span>
+        <span><i class="s2"></i>Spring open — ankle moves freely</span>
+      </div>
+    </div>
+
+    <ul class="loop">
+      <li>
+        <span class="step">Sense</span>
+        <p>A single force-sensitive resistor under the foot. No IMU, no encoder, no motor current to read.</p>
+      </li>
+      <li>
+        <span class="step">Detect</span>
+        <p>Heel strike and toe off are picked out by a Schmitt trigger built in analog hardware. Hysteresis is set by resistor values, not by code — there is no microcontroller in the loop.</p>
+      </li>
+      <li>
+        <span class="step">Act</span>
+        <p>A solenoid valve switches the pneumatic spring between engaged and free. Two states, one transition per phase boundary.</p>
+      </li>
+      <li>
+        <span class="step">Tune</span>
+        <p>Threshold and stiffness pair are selected per subject from benchtop characterization and a walking trial, rather than fixed across everyone.</p>
+      </li>
+    </ul>
+
+    <figure>
+      <img src="img/stance-swing-valve.jpg" alt="Pneumatic schematic and photograph of the switchable stiffness actuator: a cylinder, an electric solenoid valve routing the stance and swing paths, and a mechanical flow valve.">
+      <figcaption>
+        The switching element. Red is the stance path, blue the swing path — the solenoid valve is the
+        one place the phase decision becomes a mechanical action.
+      </figcaption>
+    </figure>
+
+    <div class="gap">
+      <h3>There is no microcontroller in this device. That was a decision.</h3>
+      <p>
+        A semi-passive design has no motor and no digital controller — that is precisely how it
+        reaches 0.99 kg and runs all day on one battery. The phase logic still had to be designed;
+        I put it in <strong>analog hardware because the mass budget said that is where it belonged</strong>.
+        Choosing where in the stack a control law should live is an engineering decision, and I made it.
+      </p>
+      <p>
+        What the project actually demanded was every layer at once, and I built all of them myself.
+      </p>
+      <div class="stack">
+        <div class="layer"><span class="lk">Mechanism</span><span class="lv">Switchable-stiffness spring, ankle and foot interface, 0.99 kg budget</span></div>
+        <div class="layer"><span class="lk">Pneumatics</span><span class="lv">Cylinder, solenoid and mechanical valve circuit for the two spring states</span></div>
+        <div class="layer"><span class="lk">Electronics</span><span class="lv">FSR front end and Schmitt-trigger threshold, hysteresis set in hardware</span></div>
+        <div class="layer"><span class="lk">Phase logic</span><span class="lv">Stance / swing switching law and its timing against the gait cycle</span></div>
+        <div class="layer"><span class="lk">Characterization</span><span class="lv">Benchtop force model of the spring across its stroke</span></div>
+        <div class="layer"><span class="lk">Human study</span><span class="lv">Six-subject protocol, metabolic and EMG measurement, statistics</span></div>
+      </div>
+      <p>
+        <strong>Control is not the layer I am missing — it is the layer I am choosing.</strong>
+        It is also the one I trained hardest in: my graduate coursework is control-heavy and I
+        earned an A+ in every control course I took. In a PhD I want to work on control of
+        assistive devices with an advantage that is genuinely uncommon on that side of the field —
+        I can design the hardware the controller runs on, instrument it, put it on a person, and
+        run the study that settles whether the control actually helped.
+      </p>
+    </div>
+
+    <figure>
+      <img src="img/metabolic.jpg" alt="Line chart of oxygen consumption per kilogram over ten minutes of walking. The trace with the device is consistently lower than the trace without it.">
+      <figcaption>
+        Oxygen consumption during walking, with and without the device — the measurement that
+        decides whether any of the timing above was right.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="eyebrow">Control training</p>
+    <h2>Graduate coursework</h2>
+    <p>
+      Every graduate course from my M.S. at Yeungnam University, with the grade earned —
+      24 credits, 4.37 / 4.50. Course titles are as they appear on the official transcript.
+      Notes describe what I implemented, not what was lectured.
+    </p>
+
+    <div class="courses">
+      <div class="course">
+        <h3>Advanced Automatic Control</h3>
+        <span class="term"><span class="grade">A+</span> Spring 2024</span>
+        <p class="detail"><span class="axis ctl">Control</span> Classical and state-space feedback design, with experiments on a two-link motor testbed.</p>
+      </div>
+      <div class="course">
+        <h3>Robot Dynamics and Control</h3>
+        <span class="term"><span class="grade">A+</span> Spring 2024</span>
+        <p class="detail"><span class="axis ctl">Control</span> Manipulator dynamics and two-degree-of-freedom control of a two-link arm.</p>
+      </div>
+      <div class="course">
+        <h3>Automotive Control Engineering</h3>
+        <span class="term"><span class="grade">A+</span> Fall 2024</span>
+        <p class="detail"><span class="axis ctl">Control</span> Lag–lead compensator design from Bode and step response, state-space modeling, term project built in Simulink.</p>
+      </div>
+      <div class="course">
+        <h3>Advanced Motor Design</h3>
+        <span class="term"><span class="grade">A+</span> Spring 2025</span>
+        <p class="detail"><span class="axis ctl">Control</span> Field-oriented current vector control; machine design term project in ANSYS Maxwell.</p>
+      </div>
+      <div class="course">
+        <h3>Advanced Linear Algebra</h3>
+        <span class="term"><span class="grade">A+</span> Spring 2025</span>
+        <p class="detail"><span class="axis math">Math</span> Jacobians and velocity / force manipulability ellipsoids for 2- and 3-link manipulators, implemented in MATLAB and applied to a Doosan M0617 arm.</p>
+      </div>
+      <div class="course">
+        <h3>Advanced Robotics</h3>
+        <span class="term"><span class="grade">A+</span> Fall 2025</span>
+        <p class="detail"><span class="axis math">Math</span> Kinematics, planning and manipulator control.</p>
+      </div>
+      <div class="course">
+        <h3>Advanced Mechatronics I</h3>
+        <span class="term"><span class="grade">A</span> Spring 2024</span>
+        <p class="detail"><span class="axis mech">Systems</span> Model-based control of soft robots; seminar and final presentation on the state of the art.</p>
+      </div>
+      <div class="course">
+        <h3>Advanced Robot Mechanism Design</h3>
+        <span class="term"><span class="grade">A</span> Fall 2024</span>
+        <p class="detail"><span class="axis mech">Mechanism</span> Mechanism synthesis and design for robotic systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Publications</p>
+    <h2>Selected work</h2>
+
+    <div class="pubs">
+      <div class="pub">
+        <span class="title">Personalized Robotic Achilles Tendon Utilizing a Semi-Passive Spring with Switching Stiffness</span>
+        <span class="venue">M. Seong, H. Heo, H. Lee, and J. Choi — IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2025</span>
+        <span class="meta"><span class="tag oral">Oral</span> &nbsp;DOI <a href="https://doi.org/10.1109/IROS60139.2025.11245843">10.1109/IROS60139.2025.11245843</a></span>
+      </div>
+
+      <div class="pub">
+        <span class="title">A Novel Wearable Ankle Assistive System Utilizing Switching Stiffness Pneumatic Spring</span>
+        <span class="venue">M. Seong, H. Heo, H. Lee, and J. Choi — International Conference on Control, Automation and Systems (ICCAS), 2025</span>
+        <span class="meta"><span class="tag oral">Oral</span> &nbsp;DOI <a href="https://doi.org/10.23919/ICCAS66577.2025.11301378">10.23919/ICCAS66577.2025.11301378</a></span>
+      </div>
+
+      <div class="pub">
+        <span class="title">Semi-passive Ankle Assist System Based on Lower Limb Dynamic Characteristics of Human Walking</span>
+        <span class="venue">M. Seong, H. Heo, and J. Choi — Joint 10th IFAC Symposium on Mechatronic Systems and 14th IFAC Symposium on Robotics, Paris, July 2025</span>
+        <span class="meta"><span class="tag oral">Oral</span> &nbsp;Presented, non-archival</span>
+      </div>
+
+      <div class="pub">
+        <span class="title">Ankle Assist Device</span>
+        <span class="venue">J. Choi and M. Seong — Korean patent application, filed January 2026</span>
+        <span class="meta"><span class="tag">Patent pending</span> &nbsp;10-2026-0011170</span>
+      </div>
+    </div>
+
+    <p class="more">Four further papers at Korean domestic conferences (ICROS, KRoC), one with an Outstanding Paper Award. Full list in my CV.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Contact</p>
+    <h2>Get in touch</h2>
+    <p>
+      I am applying for PhD positions starting Fall 2027 and I am glad to talk about
+      assistive device control, or to send the full thesis and device videos.
+    </p>
+    <div class="contact">
+      <span>Email: <a href="mailto:smk1427@yu.ac.kr">smk1427@yu.ac.kr</a></span>
+      <span>Lab: <a href="https://hrc.yu.ac.kr">Human Robot Convergence Lab</a></span>
+      <span><a href="cv.pdf">Curriculum vitae (PDF)</a></span>
+    </div>
+
+    <footer>
+      Human Robot Convergence Laboratory, Yeungnam University, Gyeongsan, Republic of Korea ·
+      Advisor: Prof. Jungsu Choi
+    </footer>
+  </section>
+
+</div>
