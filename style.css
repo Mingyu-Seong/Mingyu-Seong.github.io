@@ -92,11 +92,24 @@ p{max-width:66ch}
   .portrait{flex:none}
   .portrait img{width:132px; height:165px}
 }
+/* 항구적 선언 — 이름·키워드 바로 아래 */
+.vision{
+  font-size:clamp(1.06rem,2.2vw,1.24rem); font-weight:600; line-height:1.5;
+  letter-spacing:-.012em; color:var(--ink); margin:24px 0 32px; max-width:56ch;
+}
+/* 두 문장이 각자 한 줄을 갖도록 — 줄바꿈이 우연에 맡겨지지 않게 한다 */
+.vision span{display:block; text-wrap:balance}
+.vision span + span{margin-top:4px}
+
 .bio{font-size:1.02rem; line-height:1.62; color:var(--ink-soft); margin:20px 0 0; max-width:62ch}
 .bio strong{color:var(--ink); font-weight:600}
-.idlinks{display:flex; flex-wrap:wrap; gap:6px 18px; margin:20px 0 0; font-size:.9rem}
-.idlinks a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent}
-.idlinks a:hover{border-bottom-color:var(--swing)}
+
+.idlinks{display:flex; flex-wrap:wrap; gap:10px 22px; margin:26px 0 0; font-size:1rem}
+.idlinks a{
+  color:var(--swing); text-decoration:none; font-weight:600;
+  border-bottom:2px solid var(--swing-wash); padding-bottom:2px;
+}
+.idlinks a:hover{border-bottom-color:var(--swing); color:var(--ink)}
 
 /* ---------- news ---------- */
 .news{list-style:none; padding:0; margin:0; display:grid; gap:0; border-top:1px solid var(--line)}
