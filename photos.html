@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photos &mdash; Mingyu Seong</title>
+<meta name="description" content="Conference and laboratory photographs — Mingyu Seong, wearable robotics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <a class="brand" href="index.html">Mingyu Seong</a>
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="control.html">Control</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="publications.html">Publications</a>
+      <a href="photos.html" aria-current="page">Photos</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="pagehead">
+    <p class="eyebrow">Photos</p>
+    <h1>Conferences and the lab</h1>
+    <p class="lede">
+      Talks, the laboratory, and the device itself.
+    </p>
+  </header>
+
+  <section>
+<!--
+  사진 넣는 법 — 아래 파일명 그대로 img/ 폴더에 넣으면 자동으로 나타난다.
+  파일이 없으면 점선 자리표시자가 보이고, 넣는 순간 사진으로 바뀐다.
+
+      img/photo-iros-2025.jpg
+      img/photo-iccas-2025.jpg
+      img/photo-ifac-2025.jpg
+      img/photo-lab.jpg
+      img/photo-device.jpg
+      img/photo-graduation.jpg
+
+  가로형(4:3 또는 3:2)이 가장 잘 맞는다. 한 장에 1MB 이하로 줄여서 넣을 것.
+  칸을 더 늘리려면 <figure class="photo"> 블록을 복사하고 파일명·설명만 바꾸면 된다.
+-->
+    <div class="photogrid">
+    <figure class="photo">
+      <img src="img/photo-iros-2025.jpg" alt="IROS 2025 - Hangzhou, China"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>IROS 2025 &mdash; Hangzhou, China <span class="photo-when">October 2025</span></figcaption>
+    </figure>
+    <figure class="photo">
+      <img src="img/photo-iccas-2025.jpg" alt="ICCAS 2025"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>ICCAS 2025 <span class="photo-when">November 2025</span></figcaption>
+    </figure>
+    <figure class="photo">
+      <img src="img/photo-ifac-2025.jpg" alt="Joint IFAC MECHATRONICS / ROBOTICS - Paris, France"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>Joint IFAC MECHATRONICS / ROBOTICS &mdash; Paris, France <span class="photo-when">July 2025</span></figcaption>
+    </figure>
+    <figure class="photo">
+      <img src="img/photo-lab.jpg" alt="Human Robot Convergence Laboratory"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>Human Robot Convergence Laboratory <span class="photo-when">Yeungnam University</span></figcaption>
+    </figure>
+    <figure class="photo">
+      <img src="img/photo-device.jpg" alt="Robotic Achilles Tendon - device and testing"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>Robotic Achilles Tendon &mdash; device and testing </figcaption>
+    </figure>
+    <figure class="photo">
+      <img src="img/photo-graduation.jpg" alt="M.S. commencement"
+           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
+      <figcaption>M.S. commencement <span class="photo-when">February 2026</span></figcaption>
+    </figure>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

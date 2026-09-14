@@ -123,21 +123,6 @@ p{max-width:66ch}
 .fact span{display:block; font-size:.78rem; color:var(--muted); margin-top:4px; line-height:1.35}
 @media (max-width:620px){ .facts{grid-template-columns:repeat(2,1fr)} }
 
-/* ---------- home section cards ---------- */
-.cards{
-  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
-  background:var(--line); border:1px solid var(--line); margin-block:36px 0;
-}
-.card{display:block; background:var(--ground); padding:18px; text-decoration:none; color:inherit}
-.card:hover{background:var(--surface)}
-.card:hover .ck{color:var(--ink)}
-.ck{
-  display:block; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--stance); margin-bottom:6px;
-}
-.cd{display:block; font-size:.94rem; color:var(--ink-soft); line-height:1.45}
-@media (max-width:620px){ .cards{grid-template-columns:1fr} }
-
 /* ---------- sections ---------- */
 section{padding-block:52px 0}
 .pagehead + section{padding-block:40px 0}
@@ -242,10 +227,23 @@ figcaption{font-size:.82rem; color:var(--muted); margin-top:9px; max-width:62ch}
 .contact a:hover{border-bottom-color:var(--swing)}
 a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 
-/* ---------- site footer ---------- */
-.sitefoot{
-  margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
-  font-size:.8rem; color:var(--muted); font-family:var(--mono); line-height:1.6;
+/* ---------- photo grid ---------- */
+.photogrid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:26px 22px; margin:26px 0 0;
 }
-.sitefoot a{color:var(--muted)}
-.sitefoot a:hover{color:var(--ink)}
+.photo{margin:0}
+.photo img{
+  display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;
+  border:1px solid var(--line); background:var(--surface);
+}
+.photo figcaption{font-size:.84rem; color:var(--ink-soft); margin-top:9px; max-width:none}
+.photo-when{
+  display:block; font-family:var(--mono); font-size:.72rem; color:var(--muted); margin-top:3px;
+}
+/* 이미지가 아직 없을 때 — 점선 자리표시자 */
+.photo.empty::before{
+  content:"photo to come"; display:flex; align-items:center; justify-content:center;
+  aspect-ratio:4/3; border:1px dashed var(--line); color:var(--muted);
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.06em;
+}
+@media (max-width:620px){ .photogrid{grid-template-columns:1fr; gap:22px} }
