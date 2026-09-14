@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control &mdash; Mingyu Seong</title>
+<meta name="description" content="Gait-phase switching control of a semi-passive ankle exoskeleton: FSR sensing, Schmitt-trigger phase detection in analog hardware, and why the control law lives there.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <a class="brand" href="index.html">Mingyu Seong</a>
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="control.html" aria-current="page">Control</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="publications.html">Publications</a>
+      <a href="contact.html">Contact</a>
+      <a class="ext" href="cv.pdf">CV</a>
+      <a class="ext" href="https://scholar.google.com/citations?user=W0oG6YsAAAAJ">Scholar</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="pagehead">
+    <p class="eyebrow">Control</p>
+    <h1>Where the control actually sits</h1>
+    <p class="lede">
+      A passive spring on an ankle is only useful if it engages and releases at the right
+      moments in the gait cycle. That timing is the control problem in this device, and it is
+      the part I designed.
+    </p>
+  </header>
+
+  <section>
+    <div class="gait">
+      <svg viewBox="0 0 720 178" role="img" aria-label="Gait cycle timeline: stance phase from 0 to 60 percent with the spring engaged, swing phase from 60 to 100 percent with the ankle free. Heel strike at 0 percent and toe off at 60 percent are the two switching events.">
+        <!-- phase bars -->
+        <rect x="8" y="52" width="418" height="34" fill="var(--stance)"></rect>
+        <rect x="426" y="52" width="278" height="34" fill="var(--swing)"></rect>
+
+        <text x="18" y="74" fill="#FFFFFF" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600">STANCE &mdash; spring engaged</text>
+        <text x="436" y="74" fill="#FFFFFF" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600">SWING &mdash; free</text>
+
+        <!-- event ticks -->
+        <line x1="8" y1="38" x2="8" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+        <line x1="426" y1="38" x2="426" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+        <line x1="704" y1="38" x2="704" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
+
+        <text x="8" y="30" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">HEEL STRIKE</text>
+        <text x="426" y="30" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">TOE OFF</text>
+        <text x="704" y="30" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">HEEL STRIKE</text>
+
+        <!-- axis -->
+        <line x1="8" y1="108" x2="704" y2="108" stroke="var(--line)" stroke-width="1"></line>
+        <text x="8" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">0%</text>
+        <text x="426" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">~60%</text>
+        <text x="704" y="126" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">100%</text>
+        <text x="356" y="152" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif" font-size="12" text-anchor="middle">Gait cycle</text>
+
+        <!-- trigger annotation -->
+        <text x="8" y="172" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif" font-size="12">Switching signal: one FSR under the foot, thresholded in analog hardware.</text>
+      </svg>
+      <div class="legend">
+        <span><i class="s1"></i>Spring closed &mdash; resists dorsiflexion, stores energy</span>
+        <span><i class="s2"></i>Spring open &mdash; ankle moves freely</span>
+      </div>
+    </div>
+
+    <ul class="loop">
+      <li>
+        <span class="step">Sense</span>
+        <p>A single force-sensitive resistor under the foot. No IMU, no encoder, no motor current to read.</p>
+      </li>
+      <li>
+        <span class="step">Detect</span>
+        <p>Heel strike and toe off are picked out by a Schmitt trigger built in analog hardware. Hysteresis is set by resistor values, not by code &mdash; there is no microcontroller in the loop.</p>
+      </li>
+      <li>
+        <span class="step">Act</span>
+        <p>A solenoid valve switches the pneumatic spring between engaged and free. Two states, one transition per phase boundary.</p>
+      </li>
+      <li>
+        <span class="step">Tune</span>
+        <p>Threshold and stiffness pair are selected per subject from benchtop characterization and a walking trial, rather than fixed across everyone.</p>
+      </li>
+    </ul>
+
+    <figure>
+      <img src="img/stance-swing-valve.jpg" alt="Pneumatic schematic and photograph of the switchable stiffness actuator: a cylinder, an electric solenoid valve routing the stance and swing paths, and a mechanical flow valve.">
+      <figcaption>
+        The switching element. Red is the stance path, blue the swing path &mdash; the solenoid valve is the
+        one place the phase decision becomes a mechanical action.
+      </figcaption>
+    </figure>
+
+    <div class="gap">
+      <h3>There is no microcontroller in this device. That was a decision.</h3>
+      <p>
+        A semi-passive design has no motor and no digital controller &mdash; that is precisely how it
+        reaches 0.99 kg and runs all day on one battery. The phase logic still had to be designed;
+        I put it in <strong>analog hardware because the mass budget said that is where it belonged</strong>.
+        Choosing where in the stack a control law should live is an engineering decision, and I made it.
+      </p>
+      <p>
+        What the project actually demanded was every layer at once, and I built all of them myself.
+      </p>
+      <div class="stack">
+        <div class="layer"><span class="lk">Mechanism</span><span class="lv">Switchable-stiffness spring, ankle and foot interface, 0.99 kg budget</span></div>
+        <div class="layer"><span class="lk">Pneumatics</span><span class="lv">Cylinder, solenoid and mechanical valve circuit for the two spring states</span></div>
+        <div class="layer"><span class="lk">Electronics</span><span class="lv">FSR front end and Schmitt-trigger threshold, hysteresis set in hardware</span></div>
+        <div class="layer"><span class="lk">Phase logic</span><span class="lv">Stance / swing switching law and its timing against the gait cycle</span></div>
+        <div class="layer"><span class="lk">Characterization</span><span class="lv">Benchtop force model of the spring across its stroke</span></div>
+        <div class="layer"><span class="lk">Human study</span><span class="lv">Six-subject protocol, metabolic and EMG measurement, statistics</span></div>
+      </div>
+      <p>
+        <strong>Control is not the layer I am missing &mdash; it is the layer I am choosing.</strong>
+        It is also the one I trained hardest in: my graduate coursework is control-heavy and I
+        earned an A+ in every control course I took. In a PhD I want to work on control of
+        assistive devices with an advantage that is genuinely uncommon on that side of the field &mdash;
+        I can design the hardware the controller runs on, instrument it, put it on a person, and
+        run the study that settles whether the control actually helped.
+      </p>
+    </div>
+
+    <figure>
+      <img src="img/metabolic.jpg" alt="Line chart of oxygen consumption per kilogram over ten minutes of walking. The trace with the device is consistently lower than the trace without it.">
+      <figcaption>
+        Oxygen consumption during walking, with and without the device &mdash; the measurement that
+        decides whether any of the timing above was right.
+      </figcaption>
+    </figure>
+
+    <p class="more">Next: <a href="coursework.html">Graduate coursework &rarr;</a></p>
+  </section>
+
+  <footer class="sitefoot">
+    Human Robot Convergence Laboratory, Yeungnam University, Gyeongsan, Republic of Korea &middot;
+    Advisor: Prof. Jungsu Choi<br>
+    <a href="mailto:smk1427@yu.ac.kr">smk1427@yu.ac.kr</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

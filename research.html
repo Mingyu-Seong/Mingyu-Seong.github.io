@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research &mdash; Mingyu Seong</title>
+<meta name="description" content="Robotic Achilles Tendon: a 0.99 kg semi-passive ankle-assist exoskeleton with a switchable-stiffness pneumatic spring that reduced metabolic cost of walking by 14.3%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <a class="brand" href="index.html">Mingyu Seong</a>
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="control.html">Control</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="publications.html">Publications</a>
+      <a href="contact.html">Contact</a>
+      <a class="ext" href="cv.pdf">CV</a>
+      <a class="ext" href="https://scholar.google.com/citations?user=W0oG6YsAAAAJ">Scholar</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="pagehead">
+    <p class="eyebrow">Research</p>
+    <h1>Robotic Achilles Tendon</h1>
+    <p class="lede">
+      A semi-passive ankle-assist exoskeleton. Instead of a motor, it stores the wearer's own
+      ground reaction force in a pneumatic spring during stance and returns it at push-off.
+      The spring's stiffness is switchable, so the same device can be matched to a
+      particular walker rather than built for an average one.
+    </p>
+
+    <div class="facts">
+      <div class="fact"><b>0.99 kg</b><span>Device mass, worn</span></div>
+      <div class="fact"><b>&minus;14.3%</b><span>Metabolic cost of walking</span></div>
+      <div class="fact"><b>N = 6</b><span>Human subjects tested</span></div>
+      <div class="fact"><b>4 km/h</b><span>Treadmill walking speed</span></div>
+    </div>
+  </header>
+
+  <section>
+    <p>
+      Across six subjects walking at 4 km/h, wearing the device reduced metabolic cost by
+      14.3% compared with walking without it, at a worn mass of 0.99 kg. I led the work
+      end to end: mechanism design, sensing and phase logic, benchtop force characterization,
+      and the human-subject protocol.
+    </p>
+
+    <figure>
+      <img src="img/system-overview.jpg" alt="Diagram of the Robotic Achilles Tendon worn on both legs, showing the 24 V battery at the waist, the switchable stiffness spring at the ankle in its CLOSE and OPEN states, and the force sensitive resistor under the foot.">
+      <figcaption>
+        The worn system. The spring closes to resist ankle dorsiflexion during stance and opens
+        to let the ankle swing freely &mdash; the whole assistive behavior is that one switch, timed correctly.
+      </figcaption>
+    </figure>
+
+    <p class="more">Next: <a href="control.html">Where the control actually sits &rarr;</a></p>
+  </section>
+
+  <footer class="sitefoot">
+    Human Robot Convergence Laboratory, Yeungnam University, Gyeongsan, Republic of Korea &middot;
+    Advisor: Prof. Jungsu Choi<br>
+    <a href="mailto:smk1427@yu.ac.kr">smk1427@yu.ac.kr</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

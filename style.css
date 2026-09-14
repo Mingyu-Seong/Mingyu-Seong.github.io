@@ -1,0 +1,251 @@
+:root{
+  --ground:#F6F7F9; --surface:#FFFFFF; --ink:#141922; --ink-soft:#39424F;
+  --muted:#5A6473; --line:#DCE1E8; --line-soft:#E8ECF1;
+  --stance:#C4362B; --swing:#2C5C9C; --stance-wash:#F6E3E1; --swing-wash:#E2E9F4;
+  --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
+    --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+    --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
+  --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+  --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+.wrap{max-width:800px; margin:0 auto; padding-inline:24px; padding-block:0 72px}
+p{max-width:66ch}
+
+/* ---------- top ribbon ---------- */
+.ribbon{
+  position:sticky; top:0; z-index:20;
+  background:var(--ground); border-bottom:1px solid var(--line);
+}
+.ribbon-inner{
+  max-width:800px; margin:0 auto; padding-inline:24px;
+  display:flex; align-items:center; flex-wrap:wrap; gap:6px 24px;
+  min-height:54px; padding-block:8px;
+}
+.brand{
+  font-weight:700; letter-spacing:-.015em; font-size:1rem; color:var(--ink);
+  text-decoration:none; white-space:nowrap; margin-right:auto;
+}
+.brand:hover{color:var(--stance)}
+.topnav{
+  display:flex; flex-wrap:wrap; gap:4px 20px;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.04em;
+}
+.topnav a{
+  color:var(--muted); text-decoration:none; padding:3px 0;
+  border-bottom:1px solid transparent; white-space:nowrap;
+}
+.topnav a:hover{color:var(--ink); border-bottom-color:var(--stance)}
+.topnav a[aria-current="page"]{color:var(--ink); border-bottom-color:var(--stance)}
+.topnav a.ext{color:var(--swing)}
+.topnav a.ext:hover{border-bottom-color:var(--swing)}
+@media (max-width:700px){
+  .ribbon-inner{gap:4px 16px}
+  .brand{margin-right:0; width:100%}
+  .topnav{font-size:.74rem; gap:4px 16px}
+}
+
+/* ---------- page heads ---------- */
+.masthead{padding-block:34px 40px}
+.pagehead{padding-block:40px 0}
+.pagehead h1{
+  font-size:clamp(1.7rem,4.2vw,2.2rem); font-weight:700; letter-spacing:-.022em;
+  line-height:1.15; margin:0; text-wrap:balance;
+}
+.pagehead .lede{font-size:1.05rem; color:var(--ink-soft); margin:16px 0 0; max-width:62ch}
+
+.name{
+  font-size:clamp(2.1rem,6vw,3rem); font-weight:700; letter-spacing:-.025em;
+  line-height:1.05; margin:0; text-wrap:balance;
+}
+.role{
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); margin:14px 0 0;
+}
+
+/* ---------- intro ---------- */
+.intro{display:flex; gap:38px; align-items:flex-start}
+.introtext{flex:1 1 0; min-width:0}
+.portrait{flex:0 0 168px}
+.portrait img{
+  display:block; width:168px; height:210px; object-fit:cover;
+  border:1px solid var(--line); background:var(--surface);
+}
+@media (max-width:640px){
+  .intro{flex-direction:column-reverse; gap:22px}
+  .portrait{flex:none}
+  .portrait img{width:132px; height:165px}
+}
+.bio{font-size:1.02rem; line-height:1.62; color:var(--ink-soft); margin:20px 0 0; max-width:62ch}
+.bio strong{color:var(--ink); font-weight:600}
+.idlinks{display:flex; flex-wrap:wrap; gap:6px 18px; margin:20px 0 0; font-size:.9rem}
+.idlinks a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent}
+.idlinks a:hover{border-bottom-color:var(--swing)}
+
+/* ---------- news ---------- */
+.news{list-style:none; padding:0; margin:0; display:grid; gap:0; border-top:1px solid var(--line)}
+.news li{
+  display:grid; grid-template-columns:92px minmax(0,1fr); gap:4px 18px;
+  padding:11px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+}
+.when{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
+.what{font-size:.95rem; color:var(--ink-soft)}
+.what strong{color:var(--ink); font-weight:600}
+@media (max-width:520px){ .news li{grid-template-columns:1fr; gap:2px} }
+
+/* ---------- key figures strip ---------- */
+.facts{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
+  margin-block:36px 0;
+}
+.fact{background:var(--ground); padding:16px 14px}
+.fact b{
+  display:block; font-family:var(--mono); font-size:1.3rem; font-weight:500;
+  letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--ink);
+}
+.fact span{display:block; font-size:.78rem; color:var(--muted); margin-top:4px; line-height:1.35}
+@media (max-width:620px){ .facts{grid-template-columns:repeat(2,1fr)} }
+
+/* ---------- home section cards ---------- */
+.cards{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); margin-block:36px 0;
+}
+.card{display:block; background:var(--ground); padding:18px; text-decoration:none; color:inherit}
+.card:hover{background:var(--surface)}
+.card:hover .ck{color:var(--ink)}
+.ck{
+  display:block; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--stance); margin-bottom:6px;
+}
+.cd{display:block; font-size:.94rem; color:var(--ink-soft); line-height:1.45}
+@media (max-width:620px){ .cards{grid-template-columns:1fr} }
+
+/* ---------- sections ---------- */
+section{padding-block:52px 0}
+.pagehead + section{padding-block:40px 0}
+.eyebrow{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); display:flex; align-items:center; gap:12px; margin:0 0 18px;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+h2{font-size:1.5rem; font-weight:600; letter-spacing:-.02em; margin:0 0 14px; text-wrap:balance}
+h3{font-size:1rem; font-weight:600; margin:0 0 6px}
+
+figure{margin:26px 0 0}
+figure img{display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); background:var(--surface)}
+figcaption{font-size:.82rem; color:var(--muted); margin-top:9px; max-width:62ch}
+
+/* ---------- gait diagram ---------- */
+.gait{margin:30px 0 0}
+.gait svg{display:block; width:100%; height:auto; max-width:100%}
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; font-size:.84rem; color:var(--muted)}
+.legend i{display:inline-block; width:11px; height:11px; margin-right:7px; vertical-align:-1px}
+.legend .s1{background:var(--stance)} .legend .s2{background:var(--swing)}
+
+/* ---------- loop list ---------- */
+.loop{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
+.loop li{background:var(--ground); padding:15px 16px}
+.loop .step{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--stance); display:block; margin-bottom:5px;
+}
+.loop p{margin:0; font-size:.94rem; color:var(--ink-soft); max-width:62ch}
+
+/* ---------- gap callout ---------- */
+.gap{
+  margin:34px 0 0; padding:22px 24px; background:var(--surface);
+  border:1px solid var(--line); border-left:3px solid var(--stance);
+}
+.gap h3{font-size:1.05rem; margin-bottom:10px}
+.gap p{margin:0 0 12px; color:var(--ink-soft)}
+.gap p:last-child{margin-bottom:0}
+.gap strong{color:var(--ink); font-weight:600}
+
+/* full-stack layer list */
+.stack{display:grid; gap:0; margin:4px 0 18px; border-top:1px solid var(--line)}
+.layer{
+  display:grid; grid-template-columns:132px minmax(0,1fr); gap:4px 16px;
+  padding:9px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+}
+.lk{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--stance);
+}
+.lv{font-size:.9rem; color:var(--ink-soft)}
+@media (max-width:520px){ .layer{grid-template-columns:1fr; gap:2px} }
+
+/* grade + axis markers */
+.grade{
+  font-family:var(--mono); font-size:.74rem; font-weight:500; color:var(--ink);
+  border:1px solid var(--line); padding:1px 6px; margin-right:8px;
+}
+.axis{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase;
+  padding:1px 6px; margin-right:8px; white-space:nowrap; border:1px solid currentColor;
+}
+.axis.ctl{color:var(--stance)}
+.axis.math{color:var(--swing)}
+.axis.mech{color:var(--muted)}
+
+/* ---------- coursework ---------- */
+.courses{display:grid; gap:0; margin:22px 0 0; border-top:1px solid var(--line)}
+.course{
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 20px;
+  padding:14px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+}
+.course h3{margin:0}
+.course .detail{grid-column:1/-1; font-size:.9rem; color:var(--muted); margin:0; max-width:64ch}
+.course .term{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
+@media (max-width:520px){ .course{grid-template-columns:1fr} .course .term{grid-row:1} }
+
+/* ---------- publications ---------- */
+.pubs{margin:22px 0 0; display:grid; gap:20px}
+.pub{display:grid; gap:5px}
+.pub .title{font-weight:600; line-height:1.45}
+.pub .venue{font-size:.9rem; color:var(--ink-soft)}
+.pub .meta{font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em}
+.pub .meta a{color:var(--swing)}
+.tag{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+  padding:2px 7px; border:1px solid var(--line); color:var(--muted); white-space:nowrap;
+}
+.tag.oral{color:var(--stance); border-color:var(--stance)}
+.more{font-size:.9rem; color:var(--muted); margin-top:26px; max-width:64ch}
+
+/* ---------- inline links in prose ---------- */
+.more a, .lede a, section > p a{
+  color:var(--swing); text-decoration:none; border-bottom:1px solid transparent;
+}
+.more a:hover, .lede a:hover, section > p a:hover{border-bottom-color:var(--swing)}
+
+/* ---------- contact ---------- */
+.contact{display:flex; flex-wrap:wrap; gap:10px 28px; margin:20px 0 0; font-size:.97rem}
+.contact a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:1px}
+.contact a:hover{border-bottom-color:var(--swing)}
+a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
+
+/* ---------- site footer ---------- */
+.sitefoot{
+  margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
+  font-size:.8rem; color:var(--muted); font-family:var(--mono); line-height:1.6;
+}
+.sitefoot a{color:var(--muted)}
+.sitefoot a:hover{color:var(--ink)}
