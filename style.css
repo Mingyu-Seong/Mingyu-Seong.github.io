@@ -249,8 +249,10 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
   font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em;
   margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; max-width:none;
 }
-.confnote{font-size:.92rem; line-height:1.6; color:var(--ink-soft); margin:10px 0 0; max-width:66ch}
+.confnote{font-size:.95rem; line-height:1.6; color:var(--ink-soft); margin:10px 0 0; max-width:66ch}
 .confnote strong{color:var(--ink); font-weight:600}
+.confnote .hl{display:block; margin-bottom:2px}   /* 학회 요지 한 줄 */
+.tag.fa{color:var(--ink); border-color:var(--ink); font-weight:600}   /* First author — 굵게 */
 .roles{margin:12px 0 0}
 .roles .layer{grid-template-columns:150px minmax(0,1fr)}
 @media (max-width:520px){ .roles .layer{grid-template-columns:1fr} }
