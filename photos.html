@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Photos &mdash; Mingyu Seong</title>
-<meta name="description" content="Conference and laboratory photographs — Mingyu Seong, wearable robotics.">
+<meta name="description" content="Conference photographs, 2024&ndash;2026 &mdash; Mingyu Seong, wearable robotics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -30,62 +30,152 @@
 
   <header class="pagehead">
     <p class="eyebrow">Photos</p>
-    <h1>Conferences and the lab</h1>
-    <p class="lede">
-      Talks, the laboratory, and the device itself.
-    </p>
+    <h1>Conferences</h1>
+    <p class="lede">Talks, posters, and the places in between, 2024&ndash;2026. Newest first.</p>
   </header>
 
-  <section>
 <!--
-  사진 넣는 법 — 아래 파일명 그대로 img/ 폴더에 넣으면 자동으로 나타난다.
-  파일이 없으면 점선 자리표시자가 보이고, 넣는 순간 사진으로 바뀐다.
-
-      img/photo-iros-2025.jpg
-      img/photo-iccas-2025.jpg
-      img/photo-ifac-2025.jpg
-      img/photo-lab.jpg
-      img/photo-device.jpg
-      img/photo-graduation.jpg
-
-  가로형(4:3 또는 3:2)이 가장 잘 맞는다. 한 장에 1MB 이하로 줄여서 넣을 것.
-  칸을 더 늘리려면 <figure class="photo"> 블록을 복사하고 파일명·설명만 바꾸면 된다.
+  사진 추가하는 법 (2026-09-15)
+  · 원본은 _photo_originals/<학회>/ 에 넣는다 — 이 폴더는 GitHub에 올리지 않는다(원본에 GPS 위치정보가 있다).
+  · 웹용 사진은 img/gallery/<학회>/NN.jpg(크게 보기) + NN-s.jpg(목록용) 두 장이 한 쌍이다.
+  · 한 칸 = 아래 <a> 한 줄. style="--r:가로/세로 비율"이 틀리면 줄 높이가 어긋난다.
+  · 직접 만들기 번거로우면 Claude에게 «사진 추가»라고 하면 된다.
 -->
-    <div class="photogrid">
-    <figure class="photo">
-      <img src="img/photo-iros-2025.jpg" alt="IROS 2025 - Hangzhou, China"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>IROS 2025 &mdash; Hangzhou, China <span class="photo-when">October 2025</span></figcaption>
-    </figure>
-    <figure class="photo">
-      <img src="img/photo-iccas-2025.jpg" alt="ICCAS 2025"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>ICCAS 2025 <span class="photo-when">November 2025</span></figcaption>
-    </figure>
-    <figure class="photo">
-      <img src="img/photo-ifac-2025.jpg" alt="Joint IFAC MECHATRONICS / ROBOTICS - Paris, France"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>Joint IFAC MECHATRONICS / ROBOTICS &mdash; Paris, France <span class="photo-when">July 2025</span></figcaption>
-    </figure>
-    <figure class="photo">
-      <img src="img/photo-lab.jpg" alt="Human Robot Convergence Laboratory"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>Human Robot Convergence Laboratory <span class="photo-when">Yeungnam University</span></figcaption>
-    </figure>
-    <figure class="photo">
-      <img src="img/photo-device.jpg" alt="Robotic Achilles Tendon - device and testing"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>Robotic Achilles Tendon &mdash; device and testing </figcaption>
-    </figure>
-    <figure class="photo">
-      <img src="img/photo-graduation.jpg" alt="M.S. commencement"
-           onerror="this.closest('.photo').classList.add('empty'); this.remove();">
-      <figcaption>M.S. commencement <span class="photo-when">February 2026</span></figcaption>
-    </figure>
+
+  <section class="conf">
+    <h2>IFAC Wearable Robot Challenge 2026</h2>
+    <p class="confmeta">IFAC World Congress &middot; Busan, Korea &middot; August 2026 <span class="tag">Team lead</span></p>
+    <p class="confnote">
+      I led our team through both rounds. In the video round I was camera director and editor.
+      In the hackathon I proposed, implemented, and presented our idea: a wearable that mirrors
+      the gait of a hemiparetic patient's unaffected leg to the affected side, to help them
+      relearn a healthier walking pattern.
+    </p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/ifac-wc-2026/01.jpg" style="--r:1.5583"><img src="img/gallery/ifac-wc-2026/01-s.jpg" width="748" height="480" alt="Presenting at the IFAC Wearable Robot Challenge 2026" loading="lazy"></a>
+        <a href="img/gallery/ifac-wc-2026/02.jpg" style="--r:1.5"><img src="img/gallery/ifac-wc-2026/02-s.jpg" width="720" height="480" alt="Wearable device test at the challenge" loading="lazy"></a>
+      </div>
+      <div class="grow">
+        <a href="img/gallery/ifac-wc-2026/03.jpg" style="--r:1.4583"><img src="img/gallery/ifac-wc-2026/03-s.jpg" width="700" height="480" alt="Team photo at the IFAC Wearable Robot Challenge 2026" loading="lazy"></a>
+        <a href="img/gallery/ifac-wc-2026/04.jpg" style="--r:1.5"><img src="img/gallery/ifac-wc-2026/04-s.jpg" width="720" height="480" alt="With a fellow participant" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>ICCAS 2025</h2>
+    <p class="confmeta">Incheon, Korea &middot; November 2025 <span class="tag oral">Oral</span></p>
+    <div class="gallery">
+      <div class="grow" style="max-width:255px">
+        <a href="img/gallery/iccas-2025/01.jpg" style="--r:0.75"><img src="img/gallery/iccas-2025/01-s.jpg" width="360" height="480" alt="Oral presentation at ICCAS 2025" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>IROS 2025</h2>
+    <p class="confmeta">Hangzhou, China &middot; October 2025 <span class="tag oral">Oral</span> <span class="tag">Poster</span></p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/iros-2025/01.jpg" style="--r:2.175"><img src="img/gallery/iros-2025/01-s.jpg" width="1044" height="480" alt="Oral presentation at IROS 2025, on the hardware design" loading="lazy"></a>
+        <a href="img/gallery/iros-2025/02.jpg" style="--r:0.75"><img src="img/gallery/iros-2025/02-s.jpg" width="360" height="480" alt="Explaining the Robotic Achilles Tendon poster at IROS 2025" loading="lazy"></a>
+        <a href="img/gallery/iros-2025/03.jpg" style="--r:0.75"><img src="img/gallery/iros-2025/03-s.jpg" width="360" height="480" alt="At the former site of the Korean Provisional Government in Hangzhou" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>Joint IFAC MECHATRONICS / ROBOTICS Symposium</h2>
+    <p class="confmeta">Paris, France &middot; July 2025 <span class="tag oral">Oral</span></p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/ifac-2025/01.jpg" style="--r:1.7771"><img src="img/gallery/ifac-2025/01-s.jpg" width="853" height="480" alt="Oral presentation at the Joint IFAC MECHATRONICS / ROBOTICS Symposium" loading="lazy"></a>
+        <a href="img/gallery/ifac-2025/02.jpg" style="--r:1.3333"><img src="img/gallery/ifac-2025/02-s.jpg" width="640" height="480" alt="Group photo at the symposium venue" loading="lazy"></a>
+        <a href="img/gallery/ifac-2025/03.jpg" style="--r:0.75"><img src="img/gallery/ifac-2025/03-s.jpg" width="360" height="480" alt="In front of Napoleon Crossing the Alps" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>IEEE ICORR 2025</h2>
+    <p class="confmeta">Chicago, USA &middot; May 2025 <span class="tag">Attended</span></p>
+    <div class="gallery">
+      <div class="grow" style="max-width:718px">
+        <a href="img/gallery/icorr-2025/01.jpg" style="--r:0.75"><img src="img/gallery/icorr-2025/01-s.jpg" width="360" height="480" alt="At IEEE ICORR 2025" loading="lazy"></a>
+        <a href="img/gallery/icorr-2025/02.jpg" style="--r:1.3313"><img src="img/gallery/icorr-2025/02-s.jpg" width="639" height="480" alt="On the glass ledge of the Skydeck, Chicago" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>KRoC 2025</h2>
+    <p class="confmeta">Pyeongchang, Korea &middot; February 2025 <span class="tag">Poster</span></p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/kroc-2025/01.jpg" style="--r:0.75"><img src="img/gallery/kroc-2025/01-s.jpg" width="360" height="480" alt="Presenting a poster at KRoC 2025" loading="lazy"></a>
+        <a href="img/gallery/kroc-2025/02.jpg" style="--r:1.3333"><img src="img/gallery/kroc-2025/02-s.jpg" width="640" height="480" alt="Group photo in front of the KRoC 2025 venue" loading="lazy"></a>
+        <a href="img/gallery/kroc-2025/03.jpg" style="--r:1.3333"><img src="img/gallery/kroc-2025/03-s.jpg" width="640" height="480" alt="Snow at dusk outside the venue" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>ICRA@40</h2>
+    <p class="confmeta">Rotterdam, the Netherlands &middot; September 2024 <span class="tag">Attended</span></p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/icra40-2024/01.jpg" style="--r:0.75"><img src="img/gallery/icra40-2024/01-s.jpg" width="360" height="480" alt="At the entrance of ICRA@40" loading="lazy"></a>
+        <a href="img/gallery/icra40-2024/02.jpg" style="--r:1.3333"><img src="img/gallery/icra40-2024/02-s.jpg" width="640" height="480" alt="TU Delft campus" loading="lazy"></a>
+        <a href="img/gallery/icra40-2024/03.jpg" style="--r:0.5625"><img src="img/gallery/icra40-2024/03-s.jpg" width="270" height="480" alt="In front of the Nieuwe Kerk, Delft" loading="lazy"></a>
+        <a href="img/gallery/icra40-2024/04.jpg" style="--r:1.3333"><img src="img/gallery/icra40-2024/04-s.jpg" width="640" height="480" alt="Rotterdam skyline" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="conf">
+    <h2>ICROS 2024</h2>
+    <p class="confmeta">Daejeon, Korea &middot; July 2024 <span class="tag oral">Oral</span> <span class="tag oral">Outstanding Paper Award</span></p>
+    <div class="gallery">
+      <div class="grow">
+        <a href="img/gallery/icros-2024/01.jpg" style="--r:1.7771"><img src="img/gallery/icros-2024/01-s.jpg" width="853" height="480" alt="Oral presentation at ICROS 2024" loading="lazy"></a>
+        <a href="img/gallery/icros-2024/02.jpg" style="--r:1.5"><img src="img/gallery/icros-2024/02-s.jpg" width="600" height="400" alt="Outstanding Paper Award ceremony at ICROS 2024" loading="lazy"></a>
+      </div>
     </div>
   </section>
 
 </div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <img alt="">
+  <p class="lb-cap"></p>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('lightbox');
+  if (!dlg || typeof dlg.showModal !== 'function') return;   // no <dialog>: links just open the image
+  var img = dlg.querySelector('img'), cap = dlg.querySelector('.lb-cap');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.gallery a'));
+  var cur = 0;
+  function show(i) {
+    cur = (i + links.length) % links.length;
+    var t = links[cur].querySelector('img');
+    img.src = links[cur].getAttribute('href');
+    img.alt = t.alt; cap.textContent = t.alt;
+  }
+  links.forEach(function (a, i) {
+    a.addEventListener('click', function (e) { e.preventDefault(); show(i); dlg.showModal(); });
+  });
+  dlg.addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('close', function () { img.removeAttribute('src'); });
+  document.addEventListener('keydown', function (e) {
+    if (!dlg.open) return;
+    if (e.key === 'ArrowRight') show(cur + 1);
+    if (e.key === 'ArrowLeft') show(cur - 1);
+  });
+})();
+</script>
 
 </body>
 </html>

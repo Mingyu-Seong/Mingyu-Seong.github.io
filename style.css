@@ -82,15 +82,15 @@ p{max-width:66ch}
 /* ---------- intro ---------- */
 .intro{display:flex; gap:38px; align-items:flex-start}
 .introtext{flex:1 1 0; min-width:0}
-.portrait{flex:0 0 168px}
+.portrait{flex:0 0 200px}
 .portrait img{
-  display:block; width:168px; height:210px; object-fit:cover;
+  display:block; width:200px; height:250px; object-fit:cover;
   border:1px solid var(--line); background:var(--surface);
 }
 @media (max-width:640px){
   .intro{flex-direction:column-reverse; gap:22px}
   .portrait{flex:none}
-  .portrait img{width:132px; height:165px}
+  .portrait img{width:152px; height:190px}
 }
 /* 항구적 선언 — 이름·키워드 바로 아래 */
 .vision{
@@ -240,23 +240,36 @@ figcaption{font-size:.82rem; color:var(--muted); margin-top:9px; max-width:62ch}
 .contact a:hover{border-bottom-color:var(--swing)}
 a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 
-/* ---------- photo grid ---------- */
-.photogrid{
-  display:grid; grid-template-columns:repeat(2,1fr); gap:26px 22px; margin:26px 0 0;
+/* ---------- photo gallery (학회별 섹션) ---------- */
+.conf{padding-block:44px 0}
+.pagehead + .conf{padding-block:36px 0}
+.conf h2{font-size:1.2rem; margin:0}
+.confmeta{
+  font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em;
+  margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; max-width:none;
 }
-.photo{margin:0}
-.photo img{
-  display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;
+.confnote{font-size:.92rem; line-height:1.6; color:var(--ink-soft); margin:10px 0 0; max-width:66ch}
+/* 줄 나누기는 HTML에 미리 계산해 둔다(.grow = 한 줄).
+   줄 안에서는 폭을 사진 비율대로 나눠 높이가 같아지고, 세로 사진도 잘리지 않는다. */
+.gallery{display:grid; gap:10px; margin:16px 0 0}
+.grow{display:flex; gap:10px}
+.grow a{flex:calc(var(--r) * 100) 1 0; display:block; min-width:0}   /* ×100: 비율 합이 1 미만이면 flex가 공간을 덜 채운다 */
+.gallery img{
+  display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover;
   border:1px solid var(--line); background:var(--surface);
 }
-.photo figcaption{font-size:.84rem; color:var(--ink-soft); margin-top:9px; max-width:none}
-.photo-when{
-  display:block; font-family:var(--mono); font-size:.72rem; color:var(--muted); margin-top:3px;
+.gallery a:hover img{border-color:var(--muted)}
+/* 휴대폰 — 한 줄에 3~4장이면 너무 작아지므로 줄 안에서 다시 접는다 */
+@media (max-width:560px){
+  .grow{flex-wrap:wrap}
+  .grow a{flex:calc(var(--r) * 100) 1 calc(var(--r) * 140px)}
 }
-/* 이미지가 아직 없을 때 — 점선 자리표시자 */
-.photo.empty::before{
-  content:"photo to come"; display:flex; align-items:center; justify-content:center;
-  aspect-ratio:4/3; border:1px dashed var(--line); color:var(--muted);
-  font-family:var(--mono); font-size:.74rem; letter-spacing:.06em;
+
+/* 크게 보기 */
+.lightbox{
+  padding:0; border:0; background:transparent; max-width:96vw; max-height:94vh;
+  cursor:zoom-out; overflow:visible;
 }
-@media (max-width:620px){ .photogrid{grid-template-columns:1fr; gap:22px} }
+.lightbox::backdrop{background:rgba(8,10,14,.9)}
+.lightbox img{display:block; max-width:96vw; max-height:86vh; width:auto; height:auto; margin:0 auto}
+.lightbox .lb-cap{color:#E4E9F0; font-size:.86rem; text-align:center; margin:10px auto 0; max-width:60ch}
