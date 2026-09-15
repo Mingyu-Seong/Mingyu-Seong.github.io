@@ -243,12 +243,18 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 /* ---------- photo gallery (학회별 섹션) ---------- */
 .conf{padding-block:44px 0}
 .pagehead + .conf{padding-block:36px 0}
-.conf h2{font-size:1.2rem; margin:0}
+.conf h2{font-size:1.45rem; margin:0}      /* 1.2rem(14.4pt) → 1.45rem(17.4pt), +3pt */
+.wrap > .conf:first-of-type{padding-block:40px 0}
 .confmeta{
   font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em;
   margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; max-width:none;
 }
 .confnote{font-size:.92rem; line-height:1.6; color:var(--ink-soft); margin:10px 0 0; max-width:66ch}
+.confnote strong{color:var(--ink); font-weight:600}
+.roles{margin:12px 0 0}
+.roles .layer{grid-template-columns:150px minmax(0,1fr)}
+@media (max-width:520px){ .roles .layer{grid-template-columns:1fr} }
+.roles .lv strong{color:var(--ink); font-weight:600}
 /* 줄 나누기는 HTML에 미리 계산해 둔다(.grow = 한 줄).
    줄 안에서는 폭을 사진 비율대로 나눠 높이가 같아지고, 세로 사진도 잘리지 않는다. */
 .gallery{display:grid; gap:10px; margin:16px 0 0}
