@@ -307,3 +307,41 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 .metab .mb{stroke:var(--muted); stroke-width:1; stroke-dasharray:3 4}
 .metab .mbv{stroke:var(--stance); stroke-width:2}
 .metab .mbig{fill:var(--stance); font-size:26px; font-weight:600; letter-spacing:-.01em}
+
+/* ---------- 2026-10-21 Research 보강: 사진·그림 배치 ---------- */
+/* 대표 사진 하나만 본문 폭보다 넓게 — 이 페이지에서 유일하게 «크게» 쓰는 요소 */
+.hero{margin:36px calc((100% - min(1040px, 100vw - 48px)) / 2) 0}
+.hero img{border:0; background:none; border-radius:2px}
+
+/* 두 그림 나란히 (구성도 · 모듈) */
+.duo{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; margin-top:28px}
+.duo figure{margin:0}
+@media (max-width:640px){ .duo{grid-template-columns:minmax(0,1fr)} }
+
+/* 입각기·유각기 한 쌍 — 위쪽 띠 색이 보행 주기 색과 같다 */
+.diptych{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:32px}
+.diptych figure{margin:0; padding-top:12px; border-top:4px solid var(--stance)}
+.diptych figure.swing{border-top-color:var(--swing)}
+.diptych figcaption strong{color:var(--ink); font-weight:600; font-family:var(--sans)}
+@media (max-width:640px){ .diptych{grid-template-columns:minmax(0,1fr)} }
+
+/* 연구 경로 — 실제 시간 순서라서 연도를 붙인다 */
+.path{list-style:none; padding:0; margin:22px 0 0; border-left:2px solid var(--line)}
+.path li{display:grid; grid-template-columns:64px minmax(0,1fr); gap:4px 18px; padding:0 0 22px 18px; position:relative}
+.path li::before{content:""; position:absolute; left:-7px; top:.5rem; width:12px; height:12px; border-radius:50%; background:var(--ground); border:2px solid var(--muted)}
+.path li:last-child{padding-bottom:0}
+.path li:last-child::before{border-color:var(--stance); background:var(--stance)}
+.path .yr{font-family:var(--sans); font-weight:600; font-size:.92rem; color:var(--muted); font-variant-numeric:tabular-nums; padding-top:.1rem}
+.path h3{margin:0 0 4px}
+.path p{margin:0; font-size:.98rem; color:var(--ink-soft); max-width:60ch}
+@media (max-width:520px){ .path li{grid-template-columns:minmax(0,1fr); gap:0} }
+
+/* Home 대표 연구 — 수치 없이 사진과 한 문단 */
+.feature{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:24px; align-items:center; margin-top:4px}
+.feature img{display:block; width:100%; height:auto; border-radius:2px}
+.feature h3{font-size:1.2rem; margin:0 0 8px}
+.feature p{margin:0 0 12px; color:var(--ink-soft); font-size:1rem}
+.feature .more{font-family:var(--sans); font-weight:600; font-size:.95rem; color:var(--swing); text-decoration:none; border-bottom:2px solid var(--swing-wash); padding-bottom:2px}
+.feature .more:hover{border-bottom-color:var(--swing); color:var(--ink)}
+@media (max-width:640px){ .feature{grid-template-columns:minmax(0,1fr)} }
+a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}

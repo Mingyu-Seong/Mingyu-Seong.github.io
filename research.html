@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research &mdash; Mingyu Seong</title>
-<meta name="description" content="Robotic Achilles Tendon — a semi-passive ankle-assist exoskeleton: purpose, method (gait-phase switching in analog hardware), and result (14.3% lower metabolic cost at 0.99 kg).">
+<meta name="description" content="Robotic Achilles Tendon, a 0.99 kg semi-passive ankle assist with no motor and no microcontroller: how it works, what it achieved (14.3% lower metabolic cost in six participants), and where the work goes next.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
@@ -28,92 +28,82 @@
 <div class="wrap">
 
   <header class="pagehead">
-    <p class="eyebrow">Topic</p>
+    <p class="eyebrow">Device</p>
     <h1>Robotic Achilles Tendon</h1>
     <p class="lede">
-      A semi-passive ankle-assist exoskeleton. Instead of a motor, it stores the wearer's own
-      ground reaction force in a pneumatic spring during stance and returns it at push-off.
-      The spring's stiffness is switchable, so the same device can be matched to a
-      particular walker rather than built for an average one.
+      A semi-passive ankle assist with no motor and no microcontroller. A pre-pressurized air
+      cylinder behind the shin acts as a spring: a valve locks it during stance, so the ankle's own
+      motion compresses it and gets the energy back at push-off, and opens it during swing so the
+      ankle moves freely.
     </p>
-    <figure>
-      <img src="img/system-overview.jpg" alt="Diagram of the Robotic Achilles Tendon worn on both legs, showing the 24 V battery at the waist, the switchable stiffness spring at the ankle in its CLOSE and OPEN states, and the force sensitive resistor under the foot.">
-      <figcaption>
-        The worn system. The spring closes to resist ankle dorsiflexion during stance and opens
-        to let the ankle swing freely &mdash; the whole assistive behavior is that one switch, timed correctly.
-      </figcaption>
-    </figure>
   </header>
 
+  <figure class="hero">
+    <img src="img/rat-walking.jpg" width="1800" height="1022" alt="Side view of a person walking in a lab corridor wearing the device on both legs: a padded calf cuff, a slim cylinder module behind the shin, and a rigid bracket clipped to each shoe.">
+    <figcaption>The redesigned device on both legs. Total worn mass is 0.99 kg, battery included.</figcaption>
+  </figure>
+
   <section>
-    <p class="eyebrow">Purpose</p>
+    <p class="eyebrow">Why</p>
     <h2>Assist the ankle without a motor</h2>
     <p>
-      Motorized ankle exoskeletons can reduce the effort of walking, but their motors add mass and
-      bulk that make them uncomfortable and limit where and how long they can be worn. I wanted the
-      assistance without that cost: no motor and no digital controller, light enough to run all day
-      on one battery.
+      Motorized ankle exoskeletons can reduce the effort of walking, but motors, gearboxes and
+      batteries add mass that the wearer has to carry. I wanted the assistance without that cost:
+      no motor, no digital controller, and light enough to run for hours on one battery.
     </p>
     <p>
-      A passive spring on an ankle is only useful if it engages and releases at the right
-      moments in the gait cycle. That timing is the control problem in this device, and it is
-      the part I designed.
+      A spring at the ankle only helps if it engages and releases at the right moments of the gait
+      cycle. That timing is the control problem in this device, and it is the part I designed.
     </p>
   </section>
 
   <section>
-    <p class="eyebrow">Method</p>
-    <h2>One switch, timed by the foot</h2>
-    <p>
-      I led the work end to end: mechanism design, sensing and phase logic, benchtop force
-      characterization, and the human-subject protocol.
-    </p>
+    <p class="eyebrow">How it works</p>
+    <h2>One sensor, one switch, timed by the foot</h2>
+
+    <div class="duo">
+      <figure>
+        <img src="img/rat-schematic.jpg" width="900" height="1085" alt="Drawing of the device on a lower leg: calf attachment at the top, the pneumatic spring module along the back of the shin, a shoe attachment at the heel, and an FSR sensor under the fifth metatarsal.">
+        <figcaption>Calf cuff, spring module and shoe bracket form one load path across the ankle. The only sensor sits under the fifth metatarsal head (MT5).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/rat-psm.jpg" width="900" height="825" alt="Close-up of the pneumatic spring module with labels: pressure inlet, cylinder rod, switching circuit board, air tube, solenoid valve and cylinder.">
+        <figcaption>The spring module: a double-rod cylinder, a 5 ms solenoid valve and the switching circuit on one board.</figcaption>
+      </figure>
+    </div>
+
     <div class="gait">
-      <svg viewBox="0 0 720 178" role="img" aria-label="Gait cycle timeline: stance phase from 0 to 60 percent with the spring engaged, swing phase from 60 to 100 percent with the ankle free. Heel strike at 0 percent and toe off at 60 percent are the two switching events.">
-        <!-- phase bars -->
-        <rect x="8" y="52" width="418" height="34" fill="var(--stance)"></rect>
-        <rect x="426" y="52" width="278" height="34" fill="var(--swing)"></rect>
-
-        <text x="18" y="74" fill="#FFFFFF" font-family="Archivo, sans-serif" font-size="14"><tspan font-weight="650">Stance</tspan><tspan dx="8" font-weight="400">spring engaged</tspan></text>
-        <text x="436" y="74" fill="#FFFFFF" font-family="Archivo, sans-serif" font-size="14"><tspan font-weight="650">Swing</tspan><tspan dx="8" font-weight="400">ankle free</tspan></text>
-
-        <!-- event ticks -->
-        <line x1="8" y1="38" x2="8" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
-        <line x1="426" y1="38" x2="426" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
-        <line x1="704" y1="38" x2="704" y2="96" stroke="var(--ink)" stroke-width="1.5"></line>
-
-        <text x="8" y="30" fill="var(--ink)" font-family="Archivo, sans-serif" font-size="12" font-weight="600">Heel strike</text>
-        <text x="426" y="30" fill="var(--ink)" font-family="Archivo, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Toe off</text>
-        <text x="704" y="30" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="end">Heel strike</text>
-
-        <!-- axis -->
-        <line x1="8" y1="108" x2="704" y2="108" stroke="var(--line)" stroke-width="1"></line>
-        <text x="8" y="126" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12">0%</text>
-        <text x="426" y="126" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="middle">~60%</text>
-        <text x="704" y="126" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="end">100%</text>
-        <text x="356" y="152" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="middle">Gait cycle</text>
-
-        <!-- trigger annotation -->
-        <text x="8" y="172" fill="var(--muted)" font-family="Source Serif 4, Georgia, serif" font-size="13" font-style="italic">Switching signal: one FSR under the foot, thresholded in analog hardware.</text>
+      <svg viewBox="0 0 720 150" role="img" aria-label="Gait cycle timeline. The valve closes at foot flat, about 7 percent of the cycle, and opens at toe off, about 60 percent. Between them the spring is engaged; for the rest of the cycle the ankle is free.">
+        <rect x="8" y="46" width="48.7" height="34" fill="var(--line)"></rect>
+        <rect x="56.7" y="46" width="368.9" height="34" fill="var(--stance)"></rect>
+        <rect x="425.6" y="46" width="278.4" height="34" fill="var(--swing)"></rect>
+        <text x="68" y="68" fill="#FFFFFF" font-family="Archivo, sans-serif" font-size="14"><tspan font-weight="650">Valve closed</tspan><tspan dx="8" font-weight="400">spring engaged</tspan></text>
+        <text x="436" y="68" fill="#FFFFFF" font-family="Archivo, sans-serif" font-size="14"><tspan font-weight="650">Valve open</tspan><tspan dx="8" font-weight="400">ankle free</tspan></text>
+        <line x1="56.7" y1="32" x2="56.7" y2="90" stroke="var(--ink)" stroke-width="1.5"></line>
+        <line x1="425.6" y1="32" x2="425.6" y2="90" stroke="var(--ink)" stroke-width="1.5"></line>
+        <text x="56.7" y="24" fill="var(--ink)" font-family="Archivo, sans-serif" font-size="12" font-weight="600">Foot flat: rises past 2.30 V</text>
+        <text x="425.6" y="24" fill="var(--ink)" font-family="Archivo, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Toe off: falls below 1.65 V</text>
+        <line x1="8" y1="100" x2="704" y2="100" stroke="var(--line)" stroke-width="1"></line>
+        <text x="8" y="118" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12">0%</text>
+        <text x="56.7" y="118" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="middle">~7%</text>
+        <text x="425.6" y="118" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="middle">~60%</text>
+        <text x="704" y="118" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="end">100%</text>
+        <text x="356" y="142" fill="var(--muted)" font-family="Archivo, sans-serif" font-size="12" text-anchor="middle">Gait cycle, from heel contact</text>
       </svg>
-      <div class="legend">
-        <span><i class="s1"></i>Spring closed: resists dorsiflexion, stores energy</span>
-        <span><i class="s2"></i>Spring open: ankle moves freely</span>
-      </div>
     </div>
 
     <ul class="loop">
       <li>
         <span class="step">Sense</span>
-        <p>A single force-sensitive resistor under the foot. No IMU, no encoder, no motor current to read.</p>
+        <p>One force-sensitive resistor under the fifth metatarsal head. Its signal rises after heel contact and drops almost exactly at toe off.</p>
       </li>
       <li>
         <span class="step">Detect</span>
-        <p>Heel strike and toe off are picked out by a Schmitt trigger built in analog hardware. Hysteresis is set by resistor values, not by code &mdash; there is no microcontroller in the loop.</p>
+        <p>A Schmitt-trigger inverter with built-in thresholds turns that voltage into an on/off signal: on above 2.30 V, off below 1.65 V. A single threshold either fired early on heel-contact noise or released before push-off ended; two thresholds fixed both. There is no microcontroller in the loop.</p>
       </li>
       <li>
         <span class="step">Act</span>
-        <p>A solenoid valve switches the pneumatic spring between engaged and free. Two states, one transition per phase boundary.</p>
+        <p>The signal drives the solenoid valve through a transistor. Closed, the cylinder is a spring; open, both chambers share the same air and the cylinder pushes back with no force.</p>
       </li>
       <li>
         <span class="step">Fit</span>
@@ -122,42 +112,51 @@
     </ul>
 
     <figure>
-      <img src="img/stance-swing-valve.jpg" alt="Pneumatic schematic and photograph of the switchable stiffness actuator: a cylinder, an electric solenoid valve routing the stance and swing paths, and a mechanical flow valve.">
-      <figcaption>
-        The switching element. Red is the stance path, blue the swing path &mdash; the solenoid valve is the
-        one place the phase decision becomes a mechanical action.
-      </figcaption>
+      <img src="img/fsr-thresholds.jpg" width="1400" height="907" alt="Plot of heel, MT5 and toe sensor voltages over one stride. Dashed lines mark 2.30 V and 1.65 V. A green band from about 7 to 60 percent marks where the valve is closed; red marks swing.">
+      <figcaption>Insole voltages over one stride at 4 km/h. The MT5 signal (orange) crosses 2.30 V just after heel contact and falls through 1.65 V at toe off, which is why it was chosen over the heel and toe.</figcaption>
     </figure>
+
+    <div class="diptych">
+      <figure class="stance">
+        <img src="img/valve-on.jpg" width="1100" height="660" alt="Illustration of stance: with the valve closed, ankle dorsiflexion compresses the cylinder, which then pushes back to help plantarflexion.">
+        <figcaption><strong>Stance, valve closed.</strong> Dorsiflexion compresses the trapped air; the spring returns it as plantarflexion torque at push-off.</figcaption>
+      </figure>
+      <figure class="swing">
+        <img src="img/valve-off.jpg" width="1100" height="660" alt="Illustration of swing: with the valve open, the cylinder slides freely and the ankle moves without resistance.">
+        <figcaption><strong>Swing, valve open.</strong> Air moves freely between the chambers, so the ankle swings without resistance.</figcaption>
+      </figure>
+    </div>
 
     <div class="gap">
       <h3>There is no microcontroller in this device. That was a decision.</h3>
       <p>
-        A semi-passive design has no motor and no digital controller &mdash; that is precisely how it
-        reaches 0.99 kg and runs all day on one battery. The phase logic still had to be designed;
-        I put it in <strong>analog hardware because the mass budget said that is where it belonged</strong>.
-        Choosing where in the stack a control law should live is an engineering decision, and I made it.
-      </p>
-      <p>
-        What the project actually demanded was every layer at once, and I built all of them myself.
+        A semi-passive design has no motor and no digital controller, which is how it reaches 0.99 kg
+        and runs for hours on one battery. The phase logic still had to be designed; I put it in
+        <strong>analog hardware because the mass budget said that is where it belonged</strong>.
       </p>
       <div class="stack">
-        <div class="layer"><span class="lk">Mechanism</span><span class="lv">Switchable-stiffness spring, ankle and foot interface, 0.99 kg budget</span></div>
-        <div class="layer"><span class="lk">Pneumatics</span><span class="lv">Cylinder, solenoid and mechanical valve circuit for the two spring states</span></div>
-        <div class="layer"><span class="lk">Electronics</span><span class="lv">FSR front end and Schmitt-trigger threshold, hysteresis set in hardware</span></div>
-        <div class="layer"><span class="lk">Phase logic</span><span class="lv">Stance / swing switching law and its timing against the gait cycle</span></div>
-        <div class="layer"><span class="lk">Characterization</span><span class="lv">Benchtop force model of the spring across its stroke</span></div>
-        <div class="layer"><span class="lk">Human study</span><span class="lv">Six-subject protocol, metabolic and EMG measurement, statistics</span></div>
+        <div class="layer"><span class="lk">Mechanism</span><span class="lv">Rigid shoe bracket and calf cuff that move with the ankle, 0.99 kg in total</span></div>
+        <div class="layer"><span class="lk">Pneumatics</span><span class="lv">Double-rod cylinder pre-pressurized to 0.25 MPa, solenoid valve, air path</span></div>
+        <div class="layer"><span class="lk">Electronics</span><span class="lv">Insole sensing circuit designed from concept to printed circuit board</span></div>
+        <div class="layer"><span class="lk">Phase logic</span><span class="lv">Two-threshold switching from foot flat to toe off, set from walking tests</span></div>
+        <div class="layer"><span class="lk">Characterization</span><span class="lv">Benchtop force model of the spring across its 30 mm stroke</span></div>
+        <div class="layer"><span class="lk">Human study</span><span class="lv">Six-participant protocol, metabolic measurement, statistics</span></div>
       </div>
     </div>
   </section>
 
   <section>
-    <p class="eyebrow">Conclusion</p>
+    <p class="eyebrow">Result</p>
     <h2>14.3% lower metabolic cost at 0.99 kg</h2>
     <p>
-      Across six subjects walking at 4 km/h, wearing the device reduced metabolic cost by
-      14.3% compared with walking without it, at a worn mass of 0.99 kg.
+      Across six participants walking at 4 km/h, switching the device on reduced net metabolic
+      cost by 14.3% compared with walking without it. Wearing it switched off made no measurable
+      difference, so the saving comes from the timed spring, not from the hardware itself.
     </p>
+    <figure>
+      <img src="img/spring-force.jpg" width="1000" height="855" alt="Two stacked plots over the gait cycle: cylinder displacement in millimetres, and spring force in newtons for system off and system on. With the system on, force builds through stance to about 120 N and falls to zero near 60 percent.">
+      <figcaption>The spring at work during walking. With the system on (yellow), force builds through stance to roughly 120 N and is released at toe off; with the system off it stays near zero.</figcaption>
+    </figure>
     <figure class="metab">
       <svg viewBox="0 0 720 352" role="img" aria-labelledby="metab-t metab-d">
       <title id="metab-t">Net metabolic rate for six participants in three conditions</title>
@@ -221,13 +220,36 @@
         (p = 0.018; repeated-measures ANOVA with Bonferroni correction).
       </figcaption>
     </figure>
+  </section>
+
+  <section>
+    <p class="eyebrow">Path</p>
+    <h2>How I got here</h2>
+    <ol class="path">
+      <li><span class="yr">2022</span><div><h3>Using the unaffected leg as a reference</h3><p>For people with hemiplegia, I proposed reading the unaffected leg to assist the affected one, and built a hydraulic force sensor to measure it.</p></div></li>
+      <li><span class="yr">2024</span><div><h3>Fluid bellows that transmit force</h3><p>Five generations of silicone bellows with a sarcomere-inspired structure. Outstanding Paper Award, ICROS 2024. The lesson that stayed: pressure makes a structure stiff.</p></div></li>
+      <li><span class="yr">2025</span><div><h3>Robotic Achilles Tendon, first version</h3><p>A wrist-worn inertial sensor timed the valve from arm swing. Published at IROS 2025 with five participants.</p></div></li>
+      <li><span class="yr">2026</span><div><h3>Redesign for my master's thesis</h3><p>Gait sensing moved to the insole and the device dropped from 1.4 kg to 0.99 kg. It no longer depends on how the arms move.</p></div></li>
+      <li><span class="yr">2026</span><div><h3>The 2022 idea on a powered exoskeleton</h3><p>At the IFAC Wearable Robot Challenge, our team tested the unaffected-leg reference on a hip exoskeleton.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Next</p>
+    <h2>From a fixed spring to assistance that adapts</h2>
     <p>
-      <strong>Control is not the layer I am missing &mdash; it is the layer I am choosing.</strong>
-      It is also the one I trained hardest in: my graduate coursework is control-heavy and I
-      earned an A+ in every control course I took (see <a href="coursework.html">Coursework</a>). In a PhD I want to work on control of
-      assistive devices with an advantage that is genuinely uncommon on that side of the field &mdash;
-      I can design the hardware the controller runs on, instrument it, put it on a person, and
-      run the study that settles whether the control actually helped.
+      The same choices that made this device light also limit it. One air pressure, set before
+      walking, fixes its stiffness; its valve switches at fixed thresholds; and it relies on the
+      wearer's own push-off, so it cannot follow a changing gait or help people with paralysis.
+    </p>
+    <p>
+      I have started on the control side. In August 2026 I led our team at the IFAC Wearable Robot
+      Challenge, where I led the implementation of a controller on a hip exoskeleton: it segments
+      one leg's hip angle at initial contact and uses it as the position reference for the other.
+      In a single-participant pilot the tracking error fell within one session, an early sign that
+      the wearer was adapting to the robot. My graduate coursework was control-heavy as well
+      (see <a href="coursework.html">Coursework</a>). In a PhD I want to design the hardware and the
+      control together, so that a light device can also adapt to the person wearing it.
     </p>
   </section>
 
