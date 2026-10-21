@@ -292,3 +292,18 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 .lightbox::backdrop{background:rgba(8,10,14,.9)}
 .lightbox img{display:block; max-width:96vw; max-height:86vh; width:auto; height:auto; margin:0 auto}
 .lightbox .lb-cap{color:#E6EAF0; font-family:var(--sans); font-size:.9rem; text-align:center; margin:10px auto 0; max-width:60ch}
+
+/* 대사량 슬로프그래프 (2026-10-21, RAM 원고 N=6 데이터) */
+.metab svg{display:block; width:100%; height:auto; max-width:100%; font-family:var(--sans)}
+.metab .mg{stroke:var(--line-soft); stroke-width:1}
+.metab .mt{fill:var(--muted); font-size:13px}
+.metab .ml{fill:var(--ink-soft); font-size:14px; font-weight:500}
+.metab .ms{fill:none; stroke:var(--line); stroke-width:1.6}
+.metab .mp{fill:var(--surface); stroke:var(--muted); stroke-width:1.6}
+.metab .mp.on{stroke:var(--stance)}
+.metab .me{stroke:var(--ink); stroke-width:1.6}
+.metab .mm{stroke:var(--ink); stroke-width:3.2; stroke-linecap:round}
+.metab .mm.on{stroke:var(--stance)}
+.metab .mb{stroke:var(--muted); stroke-width:1; stroke-dasharray:3 4}
+.metab .mbv{stroke:var(--stance); stroke-width:2}
+.metab .mbig{fill:var(--stance); font-size:26px; font-weight:600; letter-spacing:-.01em}

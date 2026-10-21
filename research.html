@@ -158,11 +158,67 @@
       Across six subjects walking at 4 km/h, wearing the device reduced metabolic cost by
       14.3% compared with walking without it, at a worn mass of 0.99 kg.
     </p>
-    <figure>
-      <img src="img/metabolic.jpg" alt="Line chart of oxygen consumption per kilogram over ten minutes of walking. The trace with the device is consistently lower than the trace without it.">
+    <figure class="metab">
+      <svg viewBox="0 0 720 352" role="img" aria-labelledby="metab-t metab-d">
+      <title id="metab-t">Net metabolic rate for six participants in three conditions</title>
+      <desc id="metab-d">Slopegraph. Means: no device 2.99, worn but off 2.85, worn and on 2.56 watts per kilogram. All six participants are lower with the device on; the mean drop from no device is 14.3 percent.</desc>
+      <line class="mg" x1="90" x2="560" y1="269.8" y2="269.8"/>
+      <text class="mt" x="80" y="273.8" text-anchor="end">2.4</text>
+      <line class="mg" x1="90" x2="560" y1="209.3" y2="209.3"/>
+      <text class="mt" x="80" y="213.3" text-anchor="end">2.6</text>
+      <line class="mg" x1="90" x2="560" y1="148.9" y2="148.9"/>
+      <text class="mt" x="80" y="152.9" text-anchor="end">2.8</text>
+      <line class="mg" x1="90" x2="560" y1="88.4" y2="88.4"/>
+      <text class="mt" x="80" y="92.4" text-anchor="end">3.0</text>
+      <line class="mg" x1="90" x2="560" y1="28.0" y2="28.0"/>
+      <text class="mt" x="80" y="32.0" text-anchor="end">3.2</text>
+      <text class="mt" x="22" y="164" text-anchor="middle" transform="rotate(-90 22 164)">Net metabolic rate (W/kg)</text>
+      <polyline class="ms" points="150,57.1 330,125.6 510,242.0"/>
+      <polyline class="ms" points="150,87.4 330,55.2 510,184.5"/>
+      <polyline class="ms" points="150,109.1 330,182.5 510,211.6"/>
+      <polyline class="ms" points="150,76.4 330,163.1 510,238.2"/>
+      <polyline class="ms" points="150,134.2 330,125.9 510,162.5"/>
+      <polyline class="ms" points="150,83.3 330,153.0 510,283.4"/>
+      <circle class="mp" cx="150" cy="57.1" r="4"/>
+      <circle class="mp" cx="150" cy="87.4" r="4"/>
+      <circle class="mp" cx="150" cy="109.1" r="4"/>
+      <circle class="mp" cx="150" cy="76.4" r="4"/>
+      <circle class="mp" cx="150" cy="134.2" r="4"/>
+      <circle class="mp" cx="150" cy="83.3" r="4"/>
+      <circle class="mp" cx="330" cy="125.6" r="4"/>
+      <circle class="mp" cx="330" cy="55.2" r="4"/>
+      <circle class="mp" cx="330" cy="182.5" r="4"/>
+      <circle class="mp" cx="330" cy="163.1" r="4"/>
+      <circle class="mp" cx="330" cy="125.9" r="4"/>
+      <circle class="mp" cx="330" cy="153.0" r="4"/>
+      <circle class="mp on" cx="510" cy="242.0" r="4"/>
+      <circle class="mp on" cx="510" cy="184.5" r="4"/>
+      <circle class="mp on" cx="510" cy="211.6" r="4"/>
+      <circle class="mp on" cx="510" cy="238.2" r="4"/>
+      <circle class="mp on" cx="510" cy="162.5" r="4"/>
+      <circle class="mp on" cx="510" cy="283.4" r="4"/>
+      <line class="me" x1="184" x2="184" y1="80.3" y2="102.3"/>
+      <line class="mm" x1="175" x2="193" y1="91.3" y2="91.3"/>
+      <text class="ml" x="150" y="330" text-anchor="middle">No device</text>
+      <line class="me" x1="364" x2="364" y1="116.0" y2="152.4"/>
+      <line class="mm" x1="355" x2="373" y1="134.2" y2="134.2"/>
+      <text class="ml" x="330" y="330" text-anchor="middle">Worn, off</text>
+      <line class="me" x1="544" x2="544" y1="202.6" y2="238.1"/>
+      <line class="mm on" x1="535" x2="553" y1="220.4" y2="220.4"/>
+      <text class="ml" x="510" y="330" text-anchor="middle">Worn, on</text>
+      <line class="mb" x1="196" x2="600" y1="91.3" y2="91.3"/>
+      <line class="mb" x1="556" x2="600" y1="220.4" y2="220.4"/>
+      <line class="mbv" x1="600" x2="600" y1="91.3" y2="220.4"/>
+      <text class="mbig" x="612" y="157.8">−14.3%</text>
+      <text class="mt" x="612" y="177.8">p = 0.014</text>
+      <text class="mt" x="612" y="195.8">6 of 6 lower</text>
+      </svg>
       <figcaption>
-        Oxygen consumption during walking, with and without the device &mdash; the measurement that
-        decides whether any of the timing above was right.
+        Net metabolic rate (standing cost subtracted) of six participants walking at 4 km/h, measured with a
+        portable K5 analyzer. Grey lines join each participant across conditions; the short dark marks beside each column show the mean &plusmn; SEM.
+        Wearing the device switched off did not change the cost (p = 0.268). Switching it on lowered it for
+        all six, by 14.3% against walking without it (p = 0.014) and below the switched-off condition
+        (p = 0.018; repeated-measures ANOVA with Bonferroni correction).
       </figcaption>
     </figure>
     <p>
