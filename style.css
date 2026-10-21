@@ -293,21 +293,6 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 .lightbox img{display:block; max-width:96vw; max-height:86vh; width:auto; height:auto; margin:0 auto}
 .lightbox .lb-cap{color:#E6EAF0; font-family:var(--sans); font-size:.9rem; text-align:center; margin:10px auto 0; max-width:60ch}
 
-/* 대사량 슬로프그래프 (2026-10-21, RAM 원고 N=6 데이터) */
-.metab svg{display:block; width:100%; height:auto; max-width:100%; font-family:var(--sans)}
-.metab .mg{stroke:var(--line-soft); stroke-width:1}
-.metab .mt{fill:var(--muted); font-size:13px}
-.metab .ml{fill:var(--ink-soft); font-size:14px; font-weight:500}
-.metab .ms{fill:none; stroke:var(--line); stroke-width:1.6}
-.metab .mp{fill:var(--surface); stroke:var(--muted); stroke-width:1.6}
-.metab .mp.on{stroke:var(--stance)}
-.metab .me{stroke:var(--ink); stroke-width:1.6}
-.metab .mm{stroke:var(--ink); stroke-width:3.2; stroke-linecap:round}
-.metab .mm.on{stroke:var(--stance)}
-.metab .mb{stroke:var(--muted); stroke-width:1; stroke-dasharray:3 4}
-.metab .mbv{stroke:var(--stance); stroke-width:2}
-.metab .mbig{fill:var(--stance); font-size:26px; font-weight:600; letter-spacing:-.01em}
-
 /* ---------- 2026-10-21 Research 보강: 사진·그림 배치 ---------- */
 /* 대표 사진 하나만 본문 폭보다 넓게 — 이 페이지에서 유일하게 «크게» 쓰는 요소 */
 .hero{margin:36px calc((100% - min(1040px, 100vw - 48px)) / 2) 0}
@@ -316,6 +301,8 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 /* 두 그림 나란히 (구성도 · 모듈) */
 .duo{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; margin-top:28px}
 .duo figure{margin:0}
+/* 두 그림을 같은 크기의 흰 틀에 맞춘다 (원본 비율이 달라도 줄이 맞게) */
+.duo figure img{aspect-ratio:1 / 1.1; object-fit:contain; padding:14px}
 @media (max-width:640px){ .duo{grid-template-columns:minmax(0,1fr)} }
 
 /* 입각기·유각기 한 쌍 — 위쪽 띠 색이 보행 주기 색과 같다 */
