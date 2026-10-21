@@ -1,286 +1,283 @@
+/* 2026-10-21 디자인 개편 — 이전본은 _backup/style_pre-redesign_20261021.css
+   정체성: 보행 주기. 입각기(stance) 빨강 60% · 유각기(swing) 파랑 40% 띠가 모든 페이지 상단을 지난다.
+   글꼴: Archivo(이름·제목·메뉴·라벨) + Source Serif 4(본문). 모노스페이스·대문자 라벨은 쓰지 않는다. */
 :root{
-  --ground:#F6F7F9; --surface:#FFFFFF; --ink:#141922; --ink-soft:#39424F;
-  --muted:#5A6473; --line:#DCE1E8; --line-soft:#E8ECF1;
+  --ground:#F7F8FA; --surface:#FFFFFF; --ink:#1A1D23; --ink-soft:#3A414C;
+  --muted:#5F6875; --line:#D9DEE5; --line-soft:#E9ECF0;
   --stance:#C4362B; --swing:#2C5C9C; --stance-wash:#F6E3E1; --swing-wash:#E2E9F4;
-  --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  --serif:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;
+  --sans:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
+  --measure:780px;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
-    --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+    --ground:#101318; --surface:#171B22; --ink:#E6EAF0; --ink-soft:#C3CAD5;
+    --muted:#8D96A4; --line:#29303A; --line-soft:#1F252D;
     --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0D1015; --surface:#151A21; --ink:#E4E9F0; --ink-soft:#C2CAD6;
-  --muted:#8A94A3; --line:#242B35; --line-soft:#1C222A;
+  --ground:#101318; --surface:#171B22; --ink:#E6EAF0; --ink-soft:#C3CAD5;
+  --muted:#8D96A4; --line:#29303A; --line-soft:#1F252D;
   --stance:#E3645A; --swing:#6D9DE0; --stance-wash:#2A1A18; --swing-wash:#161F2C;
 }
 
 *{box-sizing:border-box}
 body{
   margin:0; background:var(--ground); color:var(--ink);
-  font-family:var(--sans); font-size:16px; line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  font-family:var(--serif); font-size:17px; line-height:1.65;
+  font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%}
-.wrap{max-width:800px; margin:0 auto; padding-inline:24px; padding-block:0 72px}
+.wrap{max-width:calc(var(--measure) + 48px); margin:0 auto; padding-inline:24px; padding-block:0 88px}
 p{max-width:66ch}
+h1,h2,h3{font-family:var(--sans); font-stretch:100%}
 
-/* ---------- top ribbon ---------- */
+/* ---------- top ribbon + 보행 주기 띠 ---------- */
 .ribbon{
   position:sticky; top:0; z-index:20;
-  background:var(--ground); border-bottom:1px solid var(--line);
+  background:var(--ground);
+}
+/* 입각기 0–60% · 유각기 60–100%. 이 사이트에서 유일한 장식이다. */
+.ribbon::after{
+  content:""; display:block; height:4px;
+  background:linear-gradient(90deg, var(--stance) 0 60%, var(--swing) 60% 100%);
 }
 .ribbon-inner{
-  max-width:800px; margin:0 auto; padding-inline:24px;
-  display:flex; align-items:center; flex-wrap:wrap; gap:6px 24px;
-  min-height:54px; padding-block:8px;
+  max-width:calc(var(--measure) + 48px); margin:0 auto; padding-inline:24px;
+  display:flex; align-items:center; flex-wrap:wrap; gap:6px 28px;
+  min-height:58px; padding-block:10px;
 }
 .brand{
-  font-weight:700; letter-spacing:-.015em; font-size:1rem; color:var(--ink);
-  text-decoration:none; white-space:nowrap; margin-right:auto;
+  font-family:var(--sans); font-weight:650; font-stretch:112%; letter-spacing:-.01em;
+  font-size:1.02rem; color:var(--ink); text-decoration:none; white-space:nowrap; margin-right:auto;
 }
 .brand:hover{color:var(--stance)}
-.topnav{
-  display:flex; flex-wrap:wrap; gap:4px 20px;
-  font-family:var(--mono); font-size:.78rem; letter-spacing:.04em;
-}
+.topnav{display:flex; flex-wrap:wrap; gap:4px 22px; font-family:var(--sans); font-size:.9rem}
 .topnav a{
-  color:var(--muted); text-decoration:none; padding:3px 0;
-  border-bottom:1px solid transparent; white-space:nowrap;
+  color:var(--muted); text-decoration:none; padding:4px 0;
+  border-bottom:2px solid transparent; white-space:nowrap;
 }
-.topnav a:hover{color:var(--ink); border-bottom-color:var(--stance)}
-.topnav a[aria-current="page"]{color:var(--ink); border-bottom-color:var(--stance)}
-.topnav a.ext{color:var(--swing)}
-.topnav a.ext:hover{border-bottom-color:var(--swing)}
+.topnav a:hover{color:var(--ink); border-bottom-color:var(--line)}
+.topnav a[aria-current="page"]{color:var(--ink); font-weight:600; border-bottom-color:var(--stance)}
 @media (max-width:700px){
-  .ribbon-inner{gap:4px 16px}
+  .ribbon-inner{gap:2px 18px}
   .brand{margin-right:0; width:100%}
-  .topnav{font-size:.74rem; gap:4px 16px}
+  .topnav{font-size:.86rem; gap:2px 14px}
 }
 
 /* ---------- page heads ---------- */
-.masthead{padding-block:34px 40px}
-.pagehead{padding-block:40px 0}
+.masthead{padding-block:48px 8px}
+.pagehead{padding-block:48px 0}
 .pagehead h1{
-  font-size:clamp(1.7rem,4.2vw,2.2rem); font-weight:700; letter-spacing:-.022em;
-  line-height:1.15; margin:0; text-wrap:balance;
+  font-size:clamp(1.85rem,4.4vw,2.4rem); font-weight:650; font-stretch:106%;
+  letter-spacing:-.02em; line-height:1.12; margin:0; text-wrap:balance;
 }
-.pagehead .lede{font-size:1.05rem; color:var(--ink-soft); margin:16px 0 0; max-width:62ch}
+.pagehead .lede{font-size:1.12rem; line-height:1.6; color:var(--ink-soft); margin:18px 0 0; max-width:60ch}
 
 .name{
-  font-size:clamp(2.1rem,6vw,3rem); font-weight:700; letter-spacing:-.025em;
-  line-height:1.05; margin:0; text-wrap:balance;
+  font-size:clamp(2.4rem,7vw,3.6rem); font-weight:700; font-stretch:118%;
+  letter-spacing:-.03em; line-height:1; margin:0; text-wrap:balance;
 }
-.role{
-  font-family:var(--mono); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--muted); margin:14px 0 0;
-}
+.role{font-family:var(--sans); font-size:.98rem; font-weight:500; color:var(--muted); margin:14px 0 0}
 
 /* ---------- intro ---------- */
-.intro{display:flex; gap:38px; align-items:flex-start}
+.intro{display:flex; gap:40px; align-items:flex-start}
 .introtext{flex:1 1 0; min-width:0}
-.portrait{flex:0 0 200px}
+.portrait{flex:0 0 200px; padding-top:6px}
 .portrait img{
   display:block; width:200px; height:250px; object-fit:cover;
-  border:1px solid var(--line); background:var(--surface);
+  background:var(--surface); border-radius:2px;
 }
 @media (max-width:640px){
-  .intro{flex-direction:column-reverse; gap:22px}
-  .portrait{flex:none}
+  .intro{flex-direction:column-reverse; gap:24px}
+  .portrait{flex:none; padding-top:0}
   .portrait img{width:152px; height:190px}
 }
-/* 항구적 선언 — 이름·키워드 바로 아래 */
+/* 항구적 선언 — 이름·키워드 바로 아래. 문장마다 한 줄. */
 .vision{
-  font-size:clamp(1.06rem,2.2vw,1.24rem); font-weight:600; line-height:1.5;
-  letter-spacing:-.012em; color:var(--ink); margin:24px 0 32px; max-width:56ch;
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.12rem,2.4vw,1.25rem); line-height:1.45; letter-spacing:-.005em;
+  color:var(--ink); margin:28px 0 30px; max-width:none;
+  padding-left:18px; border-left:3px solid var(--stance);
 }
-/* 두 문장이 각자 한 줄을 갖도록 — 줄바꿈이 우연에 맡겨지지 않게 한다 */
 .vision span{display:block; text-wrap:balance}
 .vision span + span{margin-top:4px}
 
-.bio{font-size:1.02rem; line-height:1.62; color:var(--ink-soft); margin:20px 0 0; max-width:62ch}
+.bio{font-size:1.04rem; line-height:1.68; color:var(--ink-soft); margin:16px 0 0; max-width:62ch}
 .bio strong{color:var(--ink); font-weight:600}
 
-.idlinks{display:flex; flex-wrap:wrap; gap:10px 22px; margin:26px 0 0; font-size:1rem}
+.idlinks{
+  display:flex; flex-wrap:wrap; gap:10px 24px; margin:28px 0 0;
+  font-family:var(--sans); font-size:.96rem; max-width:none;
+}
 .idlinks a{
   color:var(--swing); text-decoration:none; font-weight:600;
   border-bottom:2px solid var(--swing-wash); padding-bottom:2px;
 }
 .idlinks a:hover{border-bottom-color:var(--swing); color:var(--ink)}
 
-/* ---------- news ---------- */
-.news{list-style:none; padding:0; margin:0; display:grid; gap:0; border-top:1px solid var(--line)}
-.news li{
-  display:grid; grid-template-columns:92px minmax(0,1fr); gap:4px 18px;
-  padding:11px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
-}
-.when{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
-.what{font-size:.95rem; color:var(--ink-soft)}
-.what strong{color:var(--ink); font-weight:600}
-@media (max-width:520px){ .news li{grid-template-columns:1fr; gap:2px} }
-
-/* ---------- key figures strip ---------- */
-.facts{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:var(--line); border:1px solid var(--line);
-  margin-block:36px 0;
-}
-.fact{background:var(--ground); padding:16px 14px}
-.fact b{
-  display:block; font-family:var(--mono); font-size:1.3rem; font-weight:500;
-  letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--ink);
-}
-.fact span{display:block; font-size:.78rem; color:var(--muted); margin-top:4px; line-height:1.35}
-@media (max-width:620px){ .facts{grid-template-columns:repeat(2,1fr)} }
-
 /* ---------- sections ---------- */
-section{padding-block:52px 0}
-.pagehead + section{padding-block:40px 0}
+section{padding-block:56px 0}
+.pagehead + section{padding-block:44px 0}
+/* 섹션 라벨 — 좁은 화면에서는 제목 위, 넓은 화면에서는 본문 왼쪽 여백에 걸린다 */
 .eyebrow{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--muted); display:flex; align-items:center; gap:12px; margin:0 0 18px;
+  font-family:var(--sans); font-size:.86rem; font-weight:600; letter-spacing:.005em;
+  color:var(--stance); margin:0 0 8px;
 }
-.eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
-h2{font-size:1.5rem; font-weight:600; letter-spacing:-.02em; margin:0 0 14px; text-wrap:balance}
-h3{font-size:1rem; font-weight:600; margin:0 0 6px}
+@media (min-width:1080px){
+  section, .pagehead{position:relative}
+  .eyebrow{position:absolute; right:calc(100% + 28px); width:150px; text-align:right; margin:0}
+  section > .eyebrow{top:calc(56px + .42rem)}
+  .pagehead + section > .eyebrow{top:calc(44px + .42rem)}
+  .pagehead > .eyebrow{top:calc(48px + .7rem)}
+  section > .eyebrow:first-child + .news{margin-top:0}
+}
+h2{font-size:1.55rem; font-weight:620; font-stretch:104%; letter-spacing:-.018em; line-height:1.2; margin:0 0 14px; text-wrap:balance}
+h3{font-size:1.05rem; font-weight:600; letter-spacing:-.005em; margin:0 0 6px}
 
-figure{margin:26px 0 0}
-figure img{display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); background:var(--surface)}
-figcaption{font-size:.82rem; color:var(--muted); margin-top:9px; max-width:62ch}
+figure{margin:28px 0 0}
+figure img{display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); background:#FFFFFF}
+figcaption{font-size:.9rem; line-height:1.55; color:var(--muted); margin-top:10px; max-width:62ch}
+
+/* ---------- news (Home · Recent) ---------- */
+.news{list-style:none; padding:0; margin:0; display:grid; border-top:1px solid var(--line)}
+.news li{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:2px 20px;
+  padding:12px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+}
+.when{
+  font-family:var(--sans); font-size:.86rem; font-weight:500; color:var(--muted);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.what{font-size:1rem; color:var(--ink-soft)}
+.what strong{color:var(--ink); font-weight:600}
+@media (max-width:520px){ .news li{grid-template-columns:1fr; gap:0} }
 
 /* ---------- gait diagram ---------- */
 .gait{margin:30px 0 0}
 .gait svg{display:block; width:100%; height:auto; max-width:100%}
-.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; font-size:.84rem; color:var(--muted)}
+.legend{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:12px; font-family:var(--sans); font-size:.86rem; color:var(--muted)}
 .legend i{display:inline-block; width:11px; height:11px; margin-right:7px; vertical-align:-1px}
 .legend .s1{background:var(--stance)} .legend .s2{background:var(--swing)}
 
-/* ---------- loop list ---------- */
-.loop{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
-.loop li{background:var(--ground); padding:15px 16px}
-.loop .step{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--stance); display:block; margin-bottom:5px;
+/* ---------- loop list (Sense → Detect → Act → Tune, 순서가 있는 목록) ---------- */
+.loop{list-style:none; padding:0; margin:26px 0 0; border-top:1px solid var(--line); counter-reset:loop}
+.loop li{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:2px 20px;
+  padding:13px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
 }
-.loop p{margin:0; font-size:.94rem; color:var(--ink-soft); max-width:62ch}
+.loop .step{font-family:var(--sans); font-size:.95rem; font-weight:600; color:var(--stance)}
+.loop p{margin:0; font-size:.98rem; color:var(--ink-soft); max-width:62ch}
+@media (max-width:520px){ .loop li{grid-template-columns:1fr; gap:0} }
 
 /* ---------- gap callout ---------- */
 .gap{
-  margin:34px 0 0; padding:22px 24px; background:var(--surface);
+  margin:36px 0 0; padding:24px 26px; background:var(--surface);
   border:1px solid var(--line); border-left:3px solid var(--stance);
 }
-.gap h3{font-size:1.05rem; margin-bottom:10px}
+.gap h3{font-size:1.1rem; margin-bottom:10px}
 .gap p{margin:0 0 12px; color:var(--ink-soft)}
 .gap p:last-child{margin-bottom:0}
 .gap strong{color:var(--ink); font-weight:600}
 
 /* full-stack layer list */
-.stack{display:grid; gap:0; margin:4px 0 18px; border-top:1px solid var(--line)}
+.stack{display:grid; margin:4px 0 18px; border-top:1px solid var(--line)}
 .layer{
-  display:grid; grid-template-columns:132px minmax(0,1fr); gap:4px 16px;
+  display:grid; grid-template-columns:136px minmax(0,1fr); gap:2px 16px;
   padding:9px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
 }
-.lk{
-  font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--stance);
-}
-.lv{font-size:.9rem; color:var(--ink-soft)}
-@media (max-width:520px){ .layer{grid-template-columns:1fr; gap:2px} }
+.lk{font-family:var(--sans); font-size:.86rem; font-weight:600; color:var(--stance)}
+.lv{font-size:.95rem; color:var(--ink-soft)}
+@media (max-width:520px){ .layer{grid-template-columns:1fr; gap:0} }
 
 /* grade + axis markers */
 .grade{
-  font-family:var(--mono); font-size:.74rem; font-weight:500; color:var(--ink);
-  border:1px solid var(--line); padding:1px 6px; margin-right:8px;
+  font-family:var(--sans); font-size:.8rem; font-weight:650; font-variant-numeric:tabular-nums;
+  color:var(--ink); background:var(--line-soft); padding:1px 7px; margin-right:8px; border-radius:2px;
 }
 .axis{
-  font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase;
-  padding:1px 6px; margin-right:8px; white-space:nowrap; border:1px solid currentColor;
+  font-family:var(--sans); font-size:.76rem; font-weight:600;
+  padding:0 7px; margin-right:8px; white-space:nowrap; border-radius:2px;
 }
-.axis.ctl{color:var(--stance)}
-.axis.math{color:var(--swing)}
-.axis.mech{color:var(--muted)}
+.axis.ctl{color:var(--stance); background:var(--stance-wash)}
+.axis.math{color:var(--swing); background:var(--swing-wash)}
+.axis.mech{color:var(--muted); background:var(--line-soft)}
 
 /* ---------- coursework ---------- */
-.courses{display:grid; gap:0; margin:22px 0 0; border-top:1px solid var(--line)}
+.courses{display:grid; margin:22px 0 0; border-top:1px solid var(--line)}
 .course{
   display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 20px;
-  padding:14px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  padding:15px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
 }
 .course h3{margin:0}
-.course .detail{grid-column:1/-1; font-size:.9rem; color:var(--muted); margin:0; max-width:64ch}
-.course .term{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap}
+.course .detail{grid-column:1/-1; font-size:.95rem; color:var(--muted); margin:0; max-width:64ch}
+.course .term{font-family:var(--sans); font-size:.86rem; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums}
 @media (max-width:520px){ .course{grid-template-columns:1fr} .course .term{grid-row:1} }
 
 /* ---------- publications ---------- */
-.pubs{margin:22px 0 0; display:grid; gap:20px}
-.pub{display:grid; gap:5px}
-.pub .title{font-weight:600; line-height:1.45}
-.pub .venue{font-size:.9rem; color:var(--ink-soft)}
-.pub .meta{font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em}
+.pubs{margin:22px 0 0; display:grid; gap:22px}
+.pub{display:grid; gap:4px}
+.pub .title{font-family:var(--sans); font-weight:600; font-size:1.02rem; line-height:1.4; letter-spacing:-.005em}
+.pub .venue{font-size:.96rem; color:var(--ink-soft)}
+.pub .meta{font-family:var(--sans); font-size:.84rem; color:var(--muted)}
 .pub .meta a{color:var(--swing)}
 .tag{
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
-  padding:2px 7px; border:1px solid var(--line); color:var(--muted); white-space:nowrap;
+  font-family:var(--sans); font-size:.76rem; font-weight:600; line-height:1.5;
+  padding:1px 8px; border:1px solid var(--line); border-radius:2px; color:var(--muted); white-space:nowrap;
 }
 .tag.oral{color:var(--stance); border-color:var(--stance)}
-.more{font-size:.9rem; color:var(--muted); margin-top:26px; max-width:64ch}
-/* 섹션: Under review · Published · Presented · Patent (2026-09-15) */
-.pubsec{padding-block:44px 0}
-.wrap > .pubsec:first-of-type{padding-block:40px 0}
-.pubsec h2{font-size:1.45rem; margin:0}
+.more{font-size:.95rem; color:var(--muted); margin-top:26px; max-width:64ch}
+/* 섹션: Journal · Conferences · Patent */
+.pubsec{padding-block:48px 0}
+.wrap > .pubsec:first-of-type{padding-block:44px 0}
+.pubsec h2{font-size:1.55rem; margin:0}
 .pubsec h2 + .pubs{margin-top:18px}
 .pub .me{color:var(--ink); font-weight:600}
 .pubgroup{
-  font-family:var(--mono); font-size:.76rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--ink-soft); margin:30px 0 0; padding-bottom:6px; border-bottom:1px solid var(--line);
+  font-size:.95rem; font-weight:600; color:var(--ink-soft);
+  margin:30px 0 0; padding-bottom:6px; border-bottom:1px solid var(--line);
 }
 .pubsec h2 + .pubgroup{margin-top:20px}
-.pubgroup span{text-transform:none; letter-spacing:.02em; margin-left:8px; color:var(--muted); font-weight:400}
+.pubgroup span{margin-left:10px; color:var(--muted); font-weight:400; font-size:.88rem}
 .pubgroup + .pubs{margin-top:16px}
-.pubsec ~ .more{margin-top:40px}
+.pubsec ~ .more{margin-top:44px}
 
 /* ---------- inline links in prose ---------- */
 .more a, .lede a, section > p a{
-  color:var(--swing); text-decoration:none; border-bottom:1px solid transparent;
+  color:var(--swing); text-decoration:none; border-bottom:1px solid var(--swing-wash);
 }
 .more a:hover, .lede a:hover, section > p a:hover{border-bottom-color:var(--swing)}
 
-/* ---------- contact ---------- */
-.contact{display:flex; flex-wrap:wrap; gap:10px 28px; margin:20px 0 0; font-size:.97rem}
-.contact a{color:var(--swing); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:1px}
-.contact a:hover{border-bottom-color:var(--swing)}
 a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 
 /* ---------- photo gallery (학회별 섹션) ---------- */
-.conf{padding-block:44px 0}
+.conf{padding-block:48px 0}
 .pagehead + .conf{padding-block:36px 0}
-.conf h2{font-size:1.45rem; margin:0}      /* 1.2rem(14.4pt) → 1.45rem(17.4pt), +3pt */
-.wrap > .conf:first-of-type{padding-block:40px 0}
+.conf h2{font-size:1.55rem; margin:0}
+.wrap > .conf:first-of-type{padding-block:44px 0}
 .confmeta{
-  font-family:var(--mono); font-size:.76rem; color:var(--muted); letter-spacing:.02em;
+  font-family:var(--sans); font-size:.88rem; color:var(--muted);
   margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; max-width:none;
 }
-.confnote{font-size:.95rem; line-height:1.6; color:var(--ink-soft); margin:10px 0 0; max-width:66ch}
+.confnote{font-size:1rem; line-height:1.62; color:var(--ink-soft); margin:12px 0 0; max-width:66ch}
 .confnote strong{color:var(--ink); font-weight:600}
 .confnote .hl{display:block; margin-bottom:2px}   /* 학회 요지 한 줄 */
-.tag.fa{color:var(--ink); border-color:var(--ink); font-weight:600}   /* First author — 굵게 */
+.tag.fa{color:var(--ink); border-color:var(--ink)}   /* First author */
 .roles{margin:12px 0 0}
 .roles .layer{grid-template-columns:150px minmax(0,1fr)}
 @media (max-width:520px){ .roles .layer{grid-template-columns:1fr} }
 .roles .lv strong{color:var(--ink); font-weight:600}
 /* 줄 나누기는 HTML에 미리 계산해 둔다(.grow = 한 줄).
    줄 안에서는 폭을 사진 비율대로 나눠 높이가 같아지고, 세로 사진도 잘리지 않는다. */
-.gallery{display:grid; gap:10px; margin:16px 0 0}
-.grow{display:flex; gap:10px}
+.gallery{display:grid; gap:8px; margin:18px 0 0}
+.grow{display:flex; gap:8px}
 .grow a{flex:calc(var(--r) * 100) 1 0; display:block; min-width:0}   /* ×100: 비율 합이 1 미만이면 flex가 공간을 덜 채운다 */
 .gallery img{
   display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover;
-  border:1px solid var(--line); background:var(--surface);
+  background:var(--surface); border-radius:2px;
 }
-.gallery a:hover img{border-color:var(--muted)}
+.gallery a:hover img{outline:2px solid var(--swing); outline-offset:2px}
 /* 휴대폰 — 한 줄에 3~4장이면 너무 작아지므로 줄 안에서 다시 접는다 */
 @media (max-width:560px){
   .grow{flex-wrap:wrap}
@@ -294,4 +291,4 @@ a:focus-visible{outline:2px solid var(--swing); outline-offset:3px}
 }
 .lightbox::backdrop{background:rgba(8,10,14,.9)}
 .lightbox img{display:block; max-width:96vw; max-height:86vh; width:auto; height:auto; margin:0 auto}
-.lightbox .lb-cap{color:#E4E9F0; font-size:.86rem; text-align:center; margin:10px auto 0; max-width:60ch}
+.lightbox .lb-cap{color:#E6EAF0; font-family:var(--sans); font-size:.9rem; text-align:center; margin:10px auto 0; max-width:60ch}
